@@ -1,0 +1,13 @@
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "corso";
+  font-weight: normal;
+  src: url("./fonts/corso.otf") format("opentype");
+}
+@font-face {
+  font-family: "distopia";
+  font-weight: normal;
+  src: url("./fonts/distopia.otf") format("opentype");
+}

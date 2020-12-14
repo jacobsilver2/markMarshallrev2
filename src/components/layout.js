@@ -1,48 +1,27 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
+import GlobalContextProvider from "../context/provider"
 import Header from "./header"
-import "./layout.css"
+import Sidebar from "./sidebar"
+import Footer from "./footer"
+import Searchbar from "./searchbar"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+const Layout = ({ children, location }) => {
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div className="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
+      <GlobalContextProvider>
+        <Header />
+        <div className="flex flex-col md:flex-row">
+          <Sidebar location={location} />
+          <div className="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+            <Searchbar />
+            {children}
+          </div>
+        </div>
+        <Footer />
+      </GlobalContextProvider>
+    </div>
   )
 }
 
