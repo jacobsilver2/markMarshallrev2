@@ -9,6 +9,8 @@ const VolumeControl = props => {
     volume,
   } = props
 
+  // testing a change
+
   function handleVolumeChange(e) {
     const xPos = e.target.value / 100
     const mute = xPos <= 0 && !isMuted
