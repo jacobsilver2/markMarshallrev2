@@ -1,8 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 import { AuthService, useAuth } from "gatsby-theme-auth0"
+import SearchBar from "./searchbar"
 
-const Header = ({ siteTitle }) => {
+import headerStyles from "../styles/headerStyle.module.css"
+
+const Header = () => {
   const { isLoggedIn, profile } = useAuth()
   const name = profile ? profile.name : ""
 
@@ -10,36 +13,20 @@ const Header = ({ siteTitle }) => {
     document.getElementById(myDropMenu).classList.toggle("invisible")
   }
 
-  // function filterDD(myDropMenu, myDropMenuSearch) {
-  //   const input = document.getElementById(myDropMenuSearch)
-  //   const filter = input.value.toUpperCase()
-  //   const div = document.getElementById(myDropMenu)
-  //   const a = div.getElementsByTagName("a")
-  //   for (const i = 0; i < a.length; i++) {
-  //     if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-  //       a[i].style.display = ""
-  //     } else {
-  //       a[i].style.display = "none"
-  //     }
-  //   }
-  // }
-
   return (
-    <nav className="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
-      <div className="flex flex-wrap items-center">
-        {/* <div className="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
-          <a href="#">
-            <span className="text-xl pl-2">
-              <i className="em em-grinning"></i>
-            </span>
-          </a>
-        </div> */}
-
-        <div className="flex w-full pt-2 content-center justify-between md:justify-end">
-          <ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
+    <header className="bg-gray-800">
+      <div className={headerStyles.container}>
+        <div className={headerStyles.logo}>
+          <h1>LOGO</h1>
+        </div>
+        <div className={headerStyles.searchbar}>
+          <SearchBar />
+        </div>
+        <div className={headerStyles.navlinks}>
+          <ul className="list-reset flex justify-between flex-1 md:flex-none">
             <li className="flex-1 md:flex-none md:mr-3">
               <Link
-                className="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline"
+                className="inline-block  px-4 text-white no-underline hover:text-purple-500"
                 to="/music"
               >
                 Music
@@ -47,7 +34,7 @@ const Header = ({ siteTitle }) => {
             </li>
             <li className="flex-1 md:flex-none md:mr-3">
               <Link
-                className="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline"
+                className="inline-block  px-4 text-white no-underline hover:text-purple-500 hover:text-underline"
                 to="/playlists"
               >
                 Playlists
@@ -55,7 +42,7 @@ const Header = ({ siteTitle }) => {
             </li>
             <li className="flex-1 md:flex-none md:mr-3">
               <Link
-                className="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline"
+                className="inline-block  px-4 text-white no-underline hover:text-purple-500 hover:text-underline"
                 to="/about"
               >
                 About
@@ -64,7 +51,7 @@ const Header = ({ siteTitle }) => {
 
             <li className="flex-1 md:flex-none md:mr-3">
               <Link
-                className="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline"
+                className="inline-block  px-4 text-white no-underline hover:text-purple-500 hover:text-underline"
                 to="/contact"
               >
                 Contact
@@ -115,7 +102,7 @@ const Header = ({ siteTitle }) => {
           </ul>
         </div>
       </div>
-    </nav>
+    </header>
   )
 }
 

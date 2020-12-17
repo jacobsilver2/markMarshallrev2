@@ -18,16 +18,12 @@ const Player = withCustomAudio(props => {
   } = props
 
   return (
-    <div className="p-2 border mt-1 mb-3 flex justify-center rounded">
+    <div className="h-full col-span-2 flex justify-between items-center rounded">
       <PlayButton {...props} />
-      <div className="flex-auto">
-        <h2 className="flex-no-wrap capitalize m-0">{trackTitle}</h2>
-        <div className="flex justify-center">
-          <VolumeControl {...props} />
-          <Progress {...props} />
-          <Timer {...props} />
-        </div>
-      </div>
+      <h2 className="">{trackTitle}</h2>
+      <VolumeControl {...props} />
+      <Progress {...props} />
+      <Timer {...props} />
     </div>
   )
 })

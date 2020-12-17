@@ -1,0 +1,25 @@
+.container {
+  background-color: var(--main-bg-color);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "filters filterlist";
+  justify-items: center;
+  color: white;
+}
+
+@media (min-width: 40em) {
+  .container {
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "filters"
+      "filterlist";
+  }
+}
+
+.filters {
+  grid-area: filters;
+}
+
+.filterlist {
+  grid-area: filterlist;
+}

@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, navigate } from "gatsby"
 import tempoCalc from "../lib/tempoCalc"
 import GimmeTippy from "./sidebarContent"
 import sortArrayAlphabetically from "../lib/sortArrayAlphabetically"
+import styles from "../styles/sidebarStyle.module.css"
 
 const Sidebar = () => {
   const [queryArr, setQueryArr] = useState([])
@@ -59,13 +60,13 @@ const Sidebar = () => {
     setQueryArr(prev => prev.filter(q => q !== f))
   }
   return (
-    <div className="bg-gray-800 shadow-xl h-16 fixed  mt-12 md:relative md:h-screen z-10 w-full md:w-48 hidden md:inline">
-      <div className="md:mt-16 md:w-48 md:fixed md:left-0 md:top-0 flex  flex-col content-center md:content-start text-left justify-between">
-        <div className="pb-1 md:pb-0 text-xs md:text-base md:text-white block">
+    <nav className={styles.container}>
+      <div className={styles.filters}>
+        <div className="text-xs md:text-base md:text-white block">
           <h1 className="text-center">FILTER</h1>
         </div>
 
-        <ul className="list-reset flex flex-row md:flex-col py-0 md:py-10  px-1 md:px-2 text-center">
+        <ul className="list-reset flex flex-row md:flex-col text-center">
           <GimmeTippy
             queryArr={queryArr}
             setQueryArr={setQueryArr}
@@ -103,52 +104,48 @@ const Sidebar = () => {
             values={moodArr}
           />
         </ul>
+      </div>
 
-        {/* buttons */}
-
-        {/* filter list */}
-
-        <div className="flex-grow flex flex-col justify-between	p-8 bg-gray-700 text-white">
-          <div>
-            <p>Selected Filters:</p>
+      <div className={styles.filterlist}>
+        <div>
+          <p>Selected Filters:</p>
+        </div>
+        <div className="">
+          {queryArr.length ? (
+            <ul className="text-center text-xs">
+              {queryArr.map(q => (
+                <li key={q}>
+                  {q}
+                  <button onClick={() => removeFilter(q)}>(remove)</button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-center">---</p>
+          )}
+        </div>
+        <div>
+          <div className="text-white text-center py-4 ">
+            <button
+              onClick={handleSearch}
+              className="w-3/4 border border-white hover:bg-white hover:text-gray-800"
+              type="text"
+            >
+              Search
+            </button>
           </div>
-          <div>
-            {queryArr.length ? (
-              <ul className="text-center text-xs">
-                {queryArr.map(q => (
-                  <li key={q}>
-                    {q}
-                    <button onClick={() => removeFilter(q)}>(remove)</button>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-center">---</p>
-            )}
-          </div>
-          <div>
-            <div className="text-white text-center py-4 ">
-              <button
-                onClick={handleSearch}
-                className="w-3/4 border border-white hover:bg-white hover:text-gray-800"
-                type="text"
-              >
-                Search
-              </button>
-            </div>
-            <div className="text-white text-center py-4">
-              <button
-                onClick={() => setQueryArr([])}
-                className="w-3/4 border border-white hover:bg-white hover:text-gray-800"
-                type="text"
-              >
-                Clear Filters
-              </button>
-            </div>
+          <div className="text-white text-center py-4">
+            <button
+              onClick={() => setQueryArr([])}
+              className="w-3/4 border border-white hover:bg-white hover:text-gray-800"
+              type="text"
+            >
+              Clear Filters
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
 

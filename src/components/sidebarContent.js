@@ -13,6 +13,7 @@ const GimmyTippy = ({ category, values, queryArr, setQueryArr }) => {
     }
   }
 
+
   return (
     <>
       <Tippy
@@ -20,7 +21,7 @@ const GimmyTippy = ({ category, values, queryArr, setQueryArr }) => {
         popperOptions={{ strategy: "fixed" }}
         interactive
         content={
-          <div className="p-2 text-left text-white max-h-80 min-w-min overflow-auto">
+          <div className="p-2 text-left text-white max-h-80 min-w-min overflow-auto sidebar-styles">
             <ul className="list-none">
               {values.map(value => (
                 <li key={value}>

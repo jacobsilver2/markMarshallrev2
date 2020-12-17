@@ -5,7 +5,7 @@ import { GlobalStateContext } from "../context/provider"
 const Footer = () => {
   const state = useContext(GlobalStateContext)
   return (
-    <footer className="bg-gray-800 shadow-xl h-16 fixed bottom-0 mt-12 z-10 w-full px-12">
+    <footer className="bg-gray-800 shadow-xl px-4 md:px-12 text-gray-200">
       <Player
         streamUrl={state.currentTrackUrl}
         trackTitle={state.currentTrackTitle}

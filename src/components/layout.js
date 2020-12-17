@@ -7,21 +7,20 @@ import Sidebar from "./sidebar"
 import Footer from "./footer"
 import Searchbar from "./searchbar"
 
+import layoutStyles from "../styles/layoutStyle.module.css"
+
 const Layout = ({ children, location }) => {
   return (
-    <div className="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
+    <>
       <GlobalContextProvider>
-        <Header />
-        <div className="flex flex-col md:flex-row">
+        <div className={layoutStyles.layoutMain}>
+          <Header />
           <Sidebar location={location} />
-          <div className="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
-            <Searchbar />
-            {children}
-          </div>
+          <main>{children}</main>
+          <Footer />
         </div>
-        <Footer />
       </GlobalContextProvider>
-    </div>
+    </>
   )
 }
 

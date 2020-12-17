@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "npm install"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "devpro\ncd mark-gatsby\ngatsby develop"
+    }
+  },
+  "identifier" : "BC783812-04A8-441A-BB43-FE7BBDA041D6",
+  "openLogOnRun" : "start"
+}

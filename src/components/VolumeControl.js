@@ -1,4 +1,7 @@
 import React from "react"
+import { VolumeIconLoudSVG, VolumeIconMuteSVG } from "./Icons"
+import "../styles/soundPlayerVolume.css"
+import "../styles/soundPlayerButton.css"
 
 const VolumeControl = props => {
   const {
@@ -8,8 +11,6 @@ const VolumeControl = props => {
     isMuted,
     volume,
   } = props
-
-  // testing a change
 
   function handleVolumeChange(e) {
     const xPos = e.target.value / 100
@@ -46,10 +47,23 @@ const VolumeControl = props => {
   }
 
   return (
-    <div className="relative">
-      <button className=""></button>
-      <div className="w-8">
-        <input className="" />
+    <div className="sb-soundplayer-volume">
+      <button
+        onClick={handleMute}
+        className="sb-soundplayer-btn sb-soundplayer-volume-btn"
+      >
+        {isMuted ? <VolumeIconMuteSVG /> : <VolumeIconLoudSVG />}
+      </button>
+      <div>
+        <input
+          className="sb-soundplayer-volume-range"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value={value}
+          onChange={handleVolumeChange}
+        />
       </div>
     </div>
   )

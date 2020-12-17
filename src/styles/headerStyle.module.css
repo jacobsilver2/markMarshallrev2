@@ -1,0 +1,34 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "logo"
+    "searchbar"
+    "navlinks";
+  align-items: center;
+  padding: 1em;
+  color: white;
+}
+
+@media (min-width: 40em) {
+  .container {
+    grid-template-columns: 12em 1fr auto;
+    grid-template-areas: "logo searchbar navlinks";
+    grid-template-rows: 1fr;
+    padding: 1em 0;
+  }
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: center;
+}
+
+.searchbar {
+  grid-area: searchbar;
+}
+
+.navlinks {
+  grid-area: navlinks;
+}

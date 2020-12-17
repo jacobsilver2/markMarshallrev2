@@ -1,8 +1,16 @@
 import React from "react"
 import { PlayIconSVG, PauseIconSVG } from "./Icons"
+import "../styles/soundPlayerButton.css"
 
 const PlayButton = props => {
-  const { playing, soundCloudAudio, onTogglePlay, seekingIcon, seeking } = props
+  const {
+    playing,
+    soundCloudAudio,
+    onTogglePlay,
+    seekingIcon,
+    seeking,
+    streamUrl,
+  } = props
 
   function handleClick(e) {
     if (!playing) {
@@ -26,8 +34,9 @@ const PlayButton = props => {
 
   return (
     <button
-      className="flex-none text-white-100 mr-2 outline-white ease-in-out bg-orange-400 w-8 h-8 relative align-middle"
+      className="sb-soundplayer-btn sb-soundplayer-play-btn"
       type="button"
+      disabled={streamUrl ? false : true}
       onClick={handleClick}
     >
       {iconNode}

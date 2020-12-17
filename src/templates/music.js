@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Song from "../components/SongCard"
 import Paginator from "../components/Paginator"
-import slugify from "../lib/slugify"
+import Sort from "../components/Sort"
 
 const Music = ({ data, pageContext, location }) => {
   const { nodes } = data.allSongs
@@ -12,7 +12,11 @@ const Music = ({ data, pageContext, location }) => {
   return (
     <Layout location={location}>
       <SEO title="Music" />
-      <div className="h-full p-4">
+      <div className="h-full">
+        <div className="grid grid-cols-3 pb-4">
+          <Sort />
+          <Paginator pageContext={pageContext} />
+        </div>
         <ul>
           {nodes.map(song => (
             <li key={song.contentful_id}>
