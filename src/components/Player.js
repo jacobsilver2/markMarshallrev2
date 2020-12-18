@@ -4,6 +4,7 @@ import PlayButton from "./PlayButton"
 import Progress from "./Progress"
 import VolumeControl from "./VolumeControl"
 import { withCustomAudio } from "react-soundplayer/addons"
+import styles from "../styles/playerStyle.module.css"
 
 const Player = withCustomAudio(props => {
   const {
@@ -18,9 +19,9 @@ const Player = withCustomAudio(props => {
   } = props
 
   return (
-    <div className="h-full col-span-2 flex justify-between items-center rounded">
+    <div className={styles.container}>
       <PlayButton {...props} />
-      <h2 className="">{trackTitle}</h2>
+      <h2>{trackTitle}</h2>
       <VolumeControl {...props} />
       <Progress {...props} />
       <Timer {...props} />

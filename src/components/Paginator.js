@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
+import styles from "../styles/paginatorStyle.module.css"
 
 const Paginator = ({ pageContext }) => {
   const { previousPagePath, nextPagePath } = pageContext
   return (
-    <div className="col-start-3 col-span-2 md:col-span-1 md:col-start-2  flex justify-between items-center md:justify-center">
+    <div className={styles.container}>
       <span
         className={
           previousPagePath

@@ -1,11 +1,12 @@
 import React, { useContext } from "react"
 import Player from "./Player"
 import { GlobalStateContext } from "../context/provider"
+import styles from "../styles/footerStyle.module.css"
 
 const Footer = () => {
   const state = useContext(GlobalStateContext)
   return (
-    <footer className="bg-gray-800 shadow-xl px-4 md:px-12 text-gray-200">
+    <footer className={styles.container}>
       <Player
         streamUrl={state.currentTrackUrl}
         trackTitle={state.currentTrackTitle}

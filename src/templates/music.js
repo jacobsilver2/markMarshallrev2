@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import Song from "../components/SongCard"
 import Paginator from "../components/Paginator"
 import Sort from "../components/Sort"
+import styles from "../styles/musicPageStyle.module.css"
 
 const Music = ({ data, pageContext, location }) => {
   const { nodes } = data.allSongs
@@ -12,8 +13,8 @@ const Music = ({ data, pageContext, location }) => {
   return (
     <Layout location={location}>
       <SEO title="Music" />
-      <div className="h-full">
-        <div className="grid grid-cols-3 pb-4">
+      <div className={styles.container}>
+        <div className={styles.topbar}>
           <Sort />
           <Paginator pageContext={pageContext} />
         </div>
@@ -24,7 +25,10 @@ const Music = ({ data, pageContext, location }) => {
             </li>
           ))}
         </ul>
-        <Paginator pageContext={pageContext} />
+        <div className={styles.bottombar}>
+          <Sort hidden={true} />
+          <Paginator pageContext={pageContext} />
+        </div>
       </div>
     </Layout>
   )

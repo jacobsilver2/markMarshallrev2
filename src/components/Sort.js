@@ -1,18 +1,19 @@
 import React, { useState } from "react"
 import Select from "react-select"
+import styles from "../styles/sortStyle.module.css"
 
 const options = [
-  { value: "chocolate", label: "Title, A-Z" },
-  { value: "strawberry", label: "Title, Z-A" },
+  { value: "asc", label: "Title, A-Z" },
+  { value: "desc", label: "Title, Z-A" },
 ]
 
 function handleChange(e) {
   console.log(e)
 }
 
-const Sort = () => {
+const Sort = ({ hidden = false }) => {
   return (
-    <div className="col-span-1">
+    <div className={`${styles.container} ${hidden ? styles.hidden : ""}`}>
       <Select
         onChange={handleChange}
         placeholder="Sort By..."

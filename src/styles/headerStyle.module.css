@@ -1,22 +1,22 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "logo"
-    "searchbar"
-    "navlinks";
+  grid-template-columns: 12em 1fr auto;
+  grid-template-areas: "logo searchbar navlinks";
   align-items: center;
-  padding: 1em;
+  grid-template-rows: 1fr;
+  padding: 1em 0;
   color: white;
 }
 
-@media (min-width: 40em) {
+@media screen and (max-width: 1023px) {
+  .logo {
+    display: none;
+  }
   .container {
-    grid-template-columns: 12em 1fr auto;
-    grid-template-areas: "logo searchbar navlinks";
     grid-template-rows: 1fr;
-    padding: 1em 0;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "searchbar navlinks";
+    padding-left: 1em;
   }
 }
 
@@ -31,4 +31,14 @@
 
 .navlinks {
   grid-area: navlinks;
+}
+
+.navlinks ul {
+  display: flex;
+  justify-content: space-between;
+  /* flex: 1 1 0%; */
+}
+
+.burger {
+  padding: 0 1em;
 }

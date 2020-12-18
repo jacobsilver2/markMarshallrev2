@@ -1,12 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, navigate } from "gatsby"
 import tempoCalc from "../lib/tempoCalc"
 import GimmeTippy from "./sidebarContent"
 import sortArrayAlphabetically from "../lib/sortArrayAlphabetically"
+import useWindowSize from "../hooks/useWindowSize"
 import styles from "../styles/sidebarStyle.module.css"
 
 const Sidebar = () => {
   const [queryArr, setQueryArr] = useState([])
+  const [dropdown, setDropdown] = useState(false)
+  const size = useWindowSize()
+
+  useEffect(() => {
+    size.width > 1024 ? setDropdown(true) : setDropdown(false)
+  }, [size.width])
+
   const data = useStaticQuery(graphql`
     query sidebarQuery {
       songs: allContentfulSong {
@@ -61,90 +69,106 @@ const Sidebar = () => {
   }
   return (
     <nav className={styles.container}>
-      <div className={styles.filters}>
-        <div className="text-xs md:text-base md:text-white block">
-          <h1 className="text-center">FILTER</h1>
-        </div>
-
-        <ul className="list-reset flex flex-row md:flex-col text-center">
-          <GimmeTippy
-            queryArr={queryArr}
-            setQueryArr={setQueryArr}
-            category="Genre"
-            values={genresArr}
-          />
-          <GimmeTippy
-            queryArr={queryArr}
-            setQueryArr={setQueryArr}
-            category="Composer"
-            values={composersArr}
-          />
-          <GimmeTippy
-            queryArr={queryArr}
-            setQueryArr={setQueryArr}
-            category="Tempo"
-            values={temposArr}
-          />
-          <GimmeTippy
-            queryArr={queryArr}
-            setQueryArr={setQueryArr}
-            category="Sounds Like"
-            values={soundsLikeArr}
-          />
-          <GimmeTippy
-            queryArr={queryArr}
-            setQueryArr={setQueryArr}
-            category="Instrumentation"
-            values={instrumentationArr}
-          />
-          <GimmeTippy
-            queryArr={queryArr}
-            setQueryArr={setQueryArr}
-            category="Mood"
-            values={moodArr}
-          />
-        </ul>
+      <div className={styles.filtersTitle}>
+        <h1 style={{ display: "inline" }}>FILTER</h1>
+        {size.width < 1024 ? (
+          <button onClick={() => setDropdown(prev => !prev)}>
+            <svg
+              className="h-3 fill-current inline"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+            </svg>
+          </button>
+        ) : (
+          ""
+        )}
       </div>
-
-      <div className={styles.filterlist}>
-        <div>
-          <p>Selected Filters:</p>
-        </div>
-        <div className="">
-          {queryArr.length ? (
-            <ul className="text-center text-xs">
-              {queryArr.map(q => (
-                <li key={q}>
-                  {q}
-                  <button onClick={() => removeFilter(q)}>(remove)</button>
-                </li>
-              ))}
+      {dropdown ? (
+        <>
+          <div className={styles.filters}>
+            <ul className={styles.filterCategories}>
+              <GimmeTippy
+                queryArr={queryArr}
+                setQueryArr={setQueryArr}
+                category="Genre"
+                values={genresArr}
+              />
+              <GimmeTippy
+                queryArr={queryArr}
+                setQueryArr={setQueryArr}
+                category="Composer"
+                values={composersArr}
+              />
+              <GimmeTippy
+                queryArr={queryArr}
+                setQueryArr={setQueryArr}
+                category="Tempo"
+                values={temposArr}
+              />
+              <GimmeTippy
+                queryArr={queryArr}
+                setQueryArr={setQueryArr}
+                category="Sounds Like"
+                values={soundsLikeArr}
+              />
+              <GimmeTippy
+                queryArr={queryArr}
+                setQueryArr={setQueryArr}
+                category="Instrumentation"
+                values={instrumentationArr}
+              />
+              <GimmeTippy
+                queryArr={queryArr}
+                setQueryArr={setQueryArr}
+                category="Mood"
+                values={moodArr}
+              />
             </ul>
-          ) : (
-            <p className="text-center">---</p>
-          )}
-        </div>
-        <div>
-          <div className="text-white text-center py-4 ">
-            <button
-              onClick={handleSearch}
-              className="w-3/4 border border-white hover:bg-white hover:text-gray-800"
-              type="text"
-            >
-              Search
-            </button>
           </div>
-          <div className="text-white text-center py-4">
-            <button
-              onClick={() => setQueryArr([])}
-              className="w-3/4 border border-white hover:bg-white hover:text-gray-800"
-              type="text"
-            >
-              Clear Filters
-            </button>
+
+          <div className={styles.filterlist}>
+            <p>Selected Filters:</p>
+            <div>
+              <ul className={styles.selectedFilters}>
+                {queryArr.length ? (
+                  <>
+                    {queryArr.map(q => (
+                      <li key={q}>
+                        {q}
+                        <button onClick={() => removeFilter(q)}>
+                          (remove)
+                        </button>
+                      </li>
+                    ))}
+                  </>
+                ) : (
+                  <li>---</li>
+                )}
+              </ul>
+            </div>
+            <div className={styles.buttonContainer}>
+              <button
+                onClick={handleSearch}
+                className={styles.buttons}
+                type="text"
+              >
+                Search
+              </button>
+              <button
+                onClick={() => setQueryArr([])}
+                className={styles.buttons}
+                type="text"
+              >
+                Clear Filters
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        ""
+      )}
     </nav>
   )
 }
