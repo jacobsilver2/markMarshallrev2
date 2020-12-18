@@ -1,0 +1,7 @@
+.container {
+  grid-area: sort;
+}
+
+.hidden {
+  visibility: hidden;
+}

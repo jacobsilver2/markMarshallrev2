@@ -1,0 +1,28 @@
+.container {
+  height: 100%;
+}
+
+.topbar {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "sort paginator";
+  padding-bottom: 1em;
+}
+
+.bottombar {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "sort paginator";
+  padding-bottom: 1em;
+}
+
+@media screen and (max-width: 1023px) {
+  .topbar {
+    grid-template-areas: "sort paginator paginator";
+  }
+  .bottombar {
+    grid-template-areas: "sort paginator paginator";
+  }
+}
