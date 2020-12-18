@@ -20,9 +20,11 @@ const Player = withCustomAudio(props => {
 
   return (
     <div className={styles.container}>
-      <PlayButton {...props} />
-      <h2>{trackTitle}</h2>
-      <VolumeControl {...props} />
+      <div className={styles.col1}>
+        <PlayButton {...props} />
+        <h2>{trackTitle}</h2>
+        <VolumeControl {...props} />
+      </div>
       <Progress {...props} />
       <Timer {...props} />
     </div>

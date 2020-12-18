@@ -1,83 +1,84 @@
-.sb-soundplayer-volume {
+.volume {
   display: flex;
-  position: relative;
+  /* position: relative; */
   align-items: center;
+  justify-content: flex-start;
 }
-.sb-soundplayer-volume:hover div {
-  width: 80px;
+.volume:hover .inputContainer {
+  width: 100%;
 }
-.sb-soundplayer-volume div {
+.inputContainer {
   overflow: hidden;
   width: 0;
   transition: width 0.2s ease-out;
-  position: relative;
 }
-.sb-soundplayer-volume-range {
+.volumeRange {
   -webkit-appearance: none;
   width: 100%;
+  background: transparent;
 }
-.sb-soundplayer-volume-range:focus {
+.volumeRange:focus {
   outline: none;
 }
 
 /* track */
-.sb-soundplayer-volume-range::-webkit-slider-runnable-track {
+.volumeRange::-webkit-slider-runnable-track {
   width: 100%;
   height: 0.2em;
   cursor: pointer;
   animate: 0.2s;
-  background: var(--sb-volume-track-color);
+  background: white;
   border-radius: 1.3px;
 }
-.sb-soundplayer-volume-range::-moz-range-track {
+.volumeRange::-moz-range-track {
   width: 100%;
   height: 0.2em;
   cursor: pointer;
   animate: 0.2s;
-  background: var(--sb-volume-track-color);
+  background: white;
   border-radius: 1.3px;
 }
-.sb-soundplayer-volume-range::-ms-track {
+.volumeRange::-ms-track {
   width: 100%;
   height: 0.2em;
   cursor: pointer;
   animate: 0.2s;
-  background: var(--sb-volume-track-color);
+  background: white;
   border-radius: 1.3px;
 }
 
 /* thumb dial */
-.sb-soundplayer-volume-range::-moz-range-thumb {
+.volumeRange::-moz-range-thumb {
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: var(--sb-volume-dial-color);
+  background: var(--red);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4em;
 }
-.sb-soundplayer-volume-range::-webkit-slider-thumb {
+.volumeRange::-webkit-slider-thumb {
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: var(--sb-volume-dial-color);
+  background: var(--red);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4em;
 }
-.sb-soundplayer-volume-range::-ms-thumb {
+.volumeRange::-ms-thumb {
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: var(--sb-volume-dial-color);
+  background: var(--red);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4em;
 }
 
 /* progress fill */
-.sb-soundplayer-volume-range::-ms-fill-lower {
-  background: var(--sb-volume-progress-color);
+.volumeRange::-ms-fill-lower {
+  background: var(--red);
 }
 
 :root {

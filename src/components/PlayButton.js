@@ -1,6 +1,6 @@
 import React from "react"
 import { PlayIconSVG, PauseIconSVG } from "./Icons"
-import "../styles/soundPlayerButton.css"
+import styles from "../styles/soundPlayerButton.module.css"
 
 const PlayButton = props => {
   const {
@@ -34,7 +34,7 @@ const PlayButton = props => {
 
   return (
     <button
-      className="sb-soundplayer-btn sb-soundplayer-play-btn"
+      className={styles.soundplayerButton}
       type="button"
       disabled={streamUrl ? false : true}
       onClick={handleClick}

@@ -5,7 +5,7 @@ export const GlobalDispatchContext = createContext()
 
 const initialState = {
   currentTrackUrl: "",
-  currentTrackTitle: "No track selected",
+  currentTrackTitle: "---",
   currentTrackPosition: 0,
   isPlaying: false,
 }

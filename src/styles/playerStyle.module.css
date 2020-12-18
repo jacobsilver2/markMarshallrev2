@@ -1,6 +1,14 @@
 .container {
   height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  /* justify-items: center; */
+  align-items: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.col1 {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
