@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql, navigate } from "gatsby"
-import Layout from "../components/layout"
 
 const PlaylistTemplate = props => {
   // commenting this crap out while I scaffold to avoid ESList warnings
@@ -12,12 +11,12 @@ const PlaylistTemplate = props => {
   //   contentful_id,
   // } = props.data.playlist
   return (
-    <Layout>
+    <>
       <div>Hi from playlist {props.data.playlist.title}</div>
       <button type="button" onClick={() => navigate(-1)}>
         Go back
       </button>
-    </Layout>
+    </>
   )
 }
 

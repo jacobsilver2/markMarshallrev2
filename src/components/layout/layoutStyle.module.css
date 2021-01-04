@@ -1,0 +1,72 @@
+:root {
+  --main-bg-color: #1c2938;
+  --purple: #9932cc;
+  --red: #dc143c;
+  scrollbar-color: var(--red) var(--main-bg-color);
+  scrollbar-width: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--main-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--red);
+  border-radius: 20px;
+}
+
+.layoutMain {
+  display: grid;
+  min-height: 100vh;
+  grid:
+    "header" auto
+    "nav" auto
+    "main" 1fr
+    "footer" auto
+    / 1fr;
+}
+
+header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--main-bg-color);
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+  /* background: lightgray; */
+  overflow: auto;
+  padding: 1em;
+}
+
+footer {
+  grid-area: footer;
+  position: sticky;
+  bottom: 0;
+}
+
+footer {
+  padding: 1em;
+}
+
+@media screen and (min-width: 1024px) {
+  .layoutMain {
+    grid-template-columns: 12em 1fr;
+    grid-template-rows: auto calc(100vh - 200px) auto;
+    grid-template-areas:
+      "header header"
+      "nav main"
+      "footer footer";
+  }
+  nav {
+    position: sticky;
+    top: 0;
+  }
+}

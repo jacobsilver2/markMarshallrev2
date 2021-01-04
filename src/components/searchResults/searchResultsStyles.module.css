@@ -1,0 +1,16 @@
+.container p,
+button {
+  color: white;
+}
+
+.results {
+  /* padding: 1rem 0; */
+}
+
+.back {
+  padding-bottom: 1em;
+}
+
+.back:hover {
+  color: var(--red);
+}

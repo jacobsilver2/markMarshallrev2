@@ -1,0 +1,107 @@
+.volume {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+.volume:hover .inputContainer {
+  width: 80px;
+}
+.inputContainer {
+  overflow: hidden;
+  width: 0;
+  -webkit-transition: width 0.2s ease-out;
+  transition: width 0.2s ease-out;
+  position: relative;
+}
+.volumeRange {
+  background: transparent;
+  -webkit-appearance: none;
+  /* max-height: 150px; */
+  width: 100%;
+}
+.volumeRange:focus {
+  outline: none;
+}
+/* track */
+.volumeRange::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.2em;
+  cursor: pointer;
+  animate: 0.2s;
+  background: white;
+  border-radius: 1.3px;
+}
+.volumeRange::-moz-range-track {
+  width: 100%;
+  height: 0.2em;
+  cursor: pointer;
+  animate: 0.2s;
+  background: white;
+  border-radius: 1.3px;
+}
+.volumeRange::-ms-track {
+  width: 100%;
+  height: 0.2em;
+  cursor: pointer;
+  animate: 0.2s;
+  background: white;
+  border-radius: 1.3px;
+}
+/* thumb dial */
+.volumeRange::-moz-range-thumb {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: var(--red);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -0.4em;
+}
+.volumeRange::-webkit-slider-thumb {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: var(--red);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -0.4em;
+}
+.volumeRange::-ms-thumb {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: var(--red);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -0.4em;
+}
+/* progress fill */
+.volumeRange::-ms-fill-lower {
+  background: var(--red);
+}
+
+.soundplayerButton {
+  display: flex;
+  background-color: transparent;
+  color: white;
+  font-size: 2em;
+  padding: 1rem;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform, box-shadow, 0.05s ease;
+}
+.soundplayerButton:hover {
+  transform: scale(1.0625);
+  color: var(--red);
+}
+.soundplayerButton:focus {
+  transform: scale(0.9375);
+}
+.soundplayerButton:active {
+  box-shadow: inset 0 0 0 2px var(--red);
+}
+.soundplayerButton:hover,
+.soundplayerButton:focus {
+  box-shadow: none;
+}

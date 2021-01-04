@@ -1,6 +1,6 @@
 import React from "react"
-import { graphql, navigate } from "gatsby"
-import Layout from "../components/layout"
+import { graphql } from "gatsby"
+import SongComponent from "../components/song/song"
 
 const SongTemplate = props => {
   // commenting this next line out while scaffolding to avoid annoying es-lint warnings.
@@ -19,12 +19,9 @@ const SongTemplate = props => {
   // } = props.data.song
 
   return (
-    <Layout>
-      <div>Hello. This is the page for {props.data.song.title}</div>
-      <button type="button" onClick={() => navigate(-1)}>
-        Go back
-      </button>
-    </Layout>
+    <>
+      <SongComponent song={props.data.song} />
+    </>
   )
 }
 

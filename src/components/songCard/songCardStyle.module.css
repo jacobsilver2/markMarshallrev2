@@ -1,0 +1,80 @@
+.container {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  display: flex;
+  padding: 2em;
+}
+
+.inner {
+  width: 100%;
+  padding: 1em;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.title {
+  width: 100%;
+  font-size: 2em;
+  color: black;
+}
+
+.subtitleWrapper {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 1em;
+  /* flex-wrap: wrap; */
+}
+
+.subtitle {
+  /* padding-right: 0.5em; */
+  font-size: small;
+  color: darkgray;
+}
+
+.subtitle b {
+  color: black;
+}
+
+.buttonContainer {
+  display: flex;
+  outline: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5em;
+}
+
+.button {
+  color: white;
+  padding: 1.5em;
+  border-radius: 9999px;
+  background: var(--red);
+}
+
+.button:hover {
+  background: darkred;
+}
+
+.waveform {
+  /* flex-grow: 1; */
+  padding-left: 1em;
+  /* height: 100%; */
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+  .subtitleWrapper {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .waveform {
+    display: none;
+  }
+}

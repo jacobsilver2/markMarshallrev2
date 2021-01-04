@@ -1,0 +1,29 @@
+.container {
+  grid-area: paginator;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    justify-content: center;
+    justify-self: center;
+  }
+}
+
+.active {
+  color: white;
+  padding: 0.5em;
+}
+
+.active:hover {
+  color: var(--red);
+}
+
+.inactive {
+  pointer-events: none;
+  cursor: default;
+  padding: 0.5em;
+  color: lightgray;
+}

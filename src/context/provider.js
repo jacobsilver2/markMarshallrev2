@@ -8,6 +8,8 @@ const initialState = {
   currentTrackTitle: "---",
   currentTrackPosition: 0,
   isPlaying: false,
+  modalOpen: false,
+  flippedPlaylistCard: null,
 }
 
 function reducer(state, action) {
@@ -35,6 +37,25 @@ function reducer(state, action) {
       return {
         ...state,
         isPlaying: false,
+      }
+    }
+    case "TOGGLE_PLAYING": {
+      return {
+        ...state,
+        isPlaying: !state.isPlaying,
+      }
+    }
+    case "TOGGLE_MODAL": {
+      return {
+        ...state,
+        modalOpen: !state.modalOpen,
+      }
+    }
+    case "SET_FLIPPED_PLAYLIST_CARD": {
+      return {
+        ...state,
+        flippedPlaylistCard:
+          action.id === state.flippedPlaylistCard ? null : action.id,
       }
     }
     default:

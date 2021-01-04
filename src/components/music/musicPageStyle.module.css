@@ -1,0 +1,33 @@
+.container {
+  height: 100%;
+}
+
+.container li {
+  margin: 0;
+  padding: 0;
+}
+
+.topbar {
+  display: grid;
+  /* grid-gap: 1rem; */
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "sort paginator";
+  padding-bottom: 1em;
+}
+
+.bottombar {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "sort paginator";
+  padding-bottom: 1em;
+}
+
+@media screen and (max-width: 1023px) {
+  .topbar {
+    grid-template-areas: "sort paginator";
+  }
+  .bottombar {
+    grid-template-areas: "sort paginator";
+  }
+}

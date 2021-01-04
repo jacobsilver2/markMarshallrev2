@@ -1,0 +1,25 @@
+.soundplayerButton {
+  display: flex;
+  background-color: transparent;
+  color: white;
+  font-size: 2em;
+  padding: 1rem;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform, box-shadow, 0.05s ease;
+}
+.soundplayerButton:hover {
+  transform: scale(1.0625);
+  color: var(--red);
+}
+.soundplayerButton:focus {
+  transform: scale(0.9375);
+}
+.soundplayerButton:active {
+  box-shadow: inset 0 0 0 2px var(--red);
+}
+.soundplayerButton:hover,
+.soundplayerButton:focus {
+  box-shadow: none;
+}

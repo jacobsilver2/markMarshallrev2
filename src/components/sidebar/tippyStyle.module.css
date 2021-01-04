@@ -1,0 +1,35 @@
+.container {
+  padding: 0.5em;
+  border: 1px solid var(--red);
+  text-align: left;
+  max-height: 200px;
+  min-width: min-content;
+  min-width: 250px;
+  overflow: auto;
+}
+
+.container ul {
+  list-style-type: none;
+}
+
+.tippy {
+  background: var(--main-bg-color);
+}
+
+.tippyCat {
+  padding-left: 0.5em;
+  display: inline;
+}
+
+.tippyName {
+  cursor: pointer;
+  color: white;
+}
+
+.tippyName:hover {
+  color: var(--red);
+}
+
+.tippyLi {
+  padding: 0.5em 0;
+}

@@ -1,0 +1,100 @@
+.container {
+  background-color: var(--main-bg-color);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "filtersTitle"
+    "filters"
+    "filterlist";
+  justify-items: center;
+  color: white;
+  padding-bottom: 1em;
+}
+
+.filters {
+  grid-area: filters;
+  width: 100%;
+  padding: 0;
+}
+
+.filterlist {
+  grid-area: filterlist;
+  text-align: center;
+  width: 100%;
+}
+
+.filtersTitle {
+  align-self: start;
+  grid-area: filtersTitle;
+  color: white;
+}
+
+.filterCategories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  text-align: center;
+  font-size: small;
+}
+
+.selectedFilters {
+  text-align: center;
+  font-size: x-small;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buttonContainer {
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+}
+
+.buttons {
+  width: 75%;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.buttons:hover {
+  background: var(--red);
+  /* color: var(--main-bg-color); */
+  color: white;
+  border: 1px solid var(--red);
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "filtersTitle"
+      "filters"
+      "filterlist";
+  }
+
+  .filters {
+    align-self: center;
+  }
+
+  .filterCategories {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    font-size: large;
+  }
+  .selectedFilters {
+    flex-direction: column;
+  }
+  .buttonContainer {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+  }
+}

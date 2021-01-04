@@ -1,0 +1,51 @@
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto 1fr auto;
+  grid-template-areas: "play title volume progress time";
+  grid-gap: 2em;
+  align-items: center;
+}
+.play {
+  grid-area: play;
+}
+
+.title {
+  grid-area: title;
+}
+
+.volume {
+  grid-area: volume;
+}
+
+.progress {
+  grid-area: progress;
+}
+
+.time {
+  grid-area: time;
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    font-size: smaller;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0px;
+    grid-template-areas:
+      "play title volume"
+      "time progress progress";
+  }
+  .play {
+    justify-self: center;
+  }
+  .title {
+    justify-self: center;
+  }
+  .volume {
+    justify-self: center;
+  }
+  .time {
+    justify-self: center;
+  }
+}

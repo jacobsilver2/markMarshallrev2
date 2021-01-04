@@ -1,14 +1,36 @@
 import React from "react"
-import { Link } from "gatsby"
-
-import Layout from "../components/layout"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import SEO from "../components/seo"
-import Image from "../components/image"
+// import styles from "../styles/homepageStyle.module.css"
+// import bg from "../images/background.png"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  return (
+    <>
+      <SEO title="Home" />
+
+      <Img
+        style={{ height: "100%", width: "100%" }}
+        imgStyle={{ objectFit: "contain" }}
+        fluid={data.file.childImageSharp.fluid}
+      />
+    </>
+  )
+}
 
 export default IndexPage
+
+export const coverQuery = graphql`
+  query coverQuery {
+    file(name: { eq: "cover" }) {
+      id
+      childImageSharp {
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+      publicURL
+    }
+  }
+`
