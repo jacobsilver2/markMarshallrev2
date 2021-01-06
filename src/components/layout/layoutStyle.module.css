@@ -2,6 +2,8 @@
   --main-bg-color: #1c2938;
   --purple: #9932cc;
   --red: #dc143c;
+  --offWhite: rgb(212, 212, 214);
+  --yellow: rgb(202, 161, 118);
   scrollbar-color: var(--red) var(--main-bg-color);
   scrollbar-width: 8px;
 }

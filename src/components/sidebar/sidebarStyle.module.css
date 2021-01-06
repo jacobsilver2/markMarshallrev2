@@ -8,8 +8,11 @@
     "filters"
     "filterlist";
   justify-items: center;
+  align-items: center;
   color: white;
   padding-bottom: 1em;
+  overflow: auto;
+  /* border: 1px solid white; */
 }
 
 .filters {

@@ -1,0 +1,37 @@
+.container {
+  /* width: 100%; */
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 6em;
+}
+
+.title {
+  /* padding-top: 2em; */
+  /* border: 1px solid blanchedalmond; */
+}
+
+.title h1 {
+  font-family: "corso";
+  color: var(--yellow);
+  font-size: 12vw;
+  line-height: 0.8;
+}
+
+.title h2 {
+  color: var(--offWhite);
+  font-size: 4vw;
+  line-height: 1;
+}
+
+.title h3 {
+  color: var(--offWhite);
+  font-size: 3vw;
+  line-height: 1.5;
+}
+
+.recents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1em;
+}

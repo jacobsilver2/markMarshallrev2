@@ -1,0 +1,37 @@
+.container {
+  cursor: pointer;
+  padding: 0.5em 0;
+}
+
+.categoryTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categoryTitle:hover {
+  color: var(--red);
+  cursor: pointer;
+}
+
+.caret {
+  margin-top: 6px;
+}
+
+.contentContainer {
+  padding: 0.5em;
+  border: 1px solid white;
+  text-align: left;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.contentContainer ul {
+  list-style-type: none;
+  font-size: small;
+}
+
+.contentCategory {
+  padding-left: 0.5em;
+  display: inline;
+}

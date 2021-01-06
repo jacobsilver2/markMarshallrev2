@@ -54,7 +54,7 @@ const Modal = () => {
   const dispatch = useContext(GlobalDispatchContext)
 
   const data = useStaticQuery(graphql`
-    query modalLogoQuery {
+    query modalImgQuery {
       file(name: { eq: "logo" }) {
         id
         childImageSharp {

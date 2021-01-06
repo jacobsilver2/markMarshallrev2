@@ -5,6 +5,7 @@ import GimmeTippy from "./sidebarContent"
 import sortArrayAlphabetically from "../../lib/sortArrayAlphabetically"
 import useWindowSize from "../../hooks/useWindowSize"
 import styles from "./sidebarStyle.module.css"
+import CollapsibleContent from "../sidebarContentCollapsible/sidebarContentCollapsible"
 
 const Sidebar = () => {
   const [queryArr, setQueryArr] = useState([])
@@ -89,37 +90,37 @@ const Sidebar = () => {
         <>
           <div className={styles.filters}>
             <ul className={styles.filterCategories}>
-              <GimmeTippy
+              <CollapsibleContent
                 queryArr={queryArr}
                 setQueryArr={setQueryArr}
                 category="Genre"
                 values={genresArr}
               />
-              <GimmeTippy
+              <CollapsibleContent
                 queryArr={queryArr}
                 setQueryArr={setQueryArr}
                 category="Composer"
                 values={composersArr}
               />
-              <GimmeTippy
+              <CollapsibleContent
                 queryArr={queryArr}
                 setQueryArr={setQueryArr}
                 category="Tempo"
                 values={temposArr}
               />
-              <GimmeTippy
+              <CollapsibleContent
                 queryArr={queryArr}
                 setQueryArr={setQueryArr}
                 category="Sounds Like"
                 values={soundsLikeArr}
               />
-              <GimmeTippy
+              <CollapsibleContent
                 queryArr={queryArr}
                 setQueryArr={setQueryArr}
                 category="Instrumentation"
                 values={instrumentationArr}
               />
-              <GimmeTippy
+              <CollapsibleContent
                 queryArr={queryArr}
                 setQueryArr={setQueryArr}
                 category="Mood"

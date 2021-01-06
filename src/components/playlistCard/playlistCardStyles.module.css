@@ -47,6 +47,7 @@
   height: 100%;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.9);
+  overflow: auto;
 }
 
 .title {
@@ -69,6 +70,7 @@
   background-color: black;
   color: white;
   transform: rotateY(180deg);
+  overflow: auto;
 }
 
 .flipCardBack h1 {

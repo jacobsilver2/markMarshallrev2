@@ -1,0 +1,81 @@
+.container {
+  /* border: 1px solid var(--offWhite); */
+  background: transparent;
+  border-radius: 8px;
+  color: var(--offWhite);
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  justify-content: space-between;
+}
+
+.items {
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  /* align-self: flex-end; */
+}
+
+.item {
+  border-radius: 4px;
+  border: 1px solid var(--offWhite);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item:hover {
+  background: var(--red);
+  border: 1px solid var(--red);
+}
+
+/* .card {
+  background: white;
+  margin-bottom: 1em;
+  display: flex;
+  padding: 2em;
+} */
+
+.title {
+  color: var(--offWhite);
+}
+
+.clickedPlaylistContainer {
+  position: relative;
+  border-radius: 4px;
+  color: black;
+  grid-row: span 3;
+  grid-column: span 3;
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/* .clickedPlaylistSongList {
+} */
+
+.clickedPlaylistTitleBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  /* border: 1px solid red; */
+}
+
+.clickedPlaylistTitle {
+  /* text-align: center; */
+  color: var(--offWhite);
+}
+
+.clickedPlaylistClose {
+  color: var(--offwhite);
+  /* justify-self: end; */
+  /* text-align: right; */
+}
+
+/* .inner {
+  width: 100%;
+  padding: 1em;
+} */
