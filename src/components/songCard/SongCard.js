@@ -16,14 +16,34 @@ import tempoCalc from "../../lib/tempoCalc"
 // import PlayButton from "../assets/svg/PlayButton.svg"
 import slugify from "../../lib/slugify"
 import styles from "./songCardStyle.module.css"
+import styled from "styled-components"
 // import PlayComponent from "../player/playButton/PlayButton"
 import { FaPlay, FaPause } from "react-icons/fa"
 
 const listLength = 3
 
+const StyledImg = styled.img`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  clip-path: ${({ width, isCurrent }) =>
+    isCurrent ? `inset(0 0 0 ${width}% )` : ""};
+`
+
+const StyledOverlayImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: ${({ width }) => `inset(0 ${100 - width}% 0 0 )`};
+  filter: opacity(0.5) drop-shadow(0 0 0 var(--main-bg-color));
+`
+
 const SongCard = ({ song }) => {
   const dispatch = useContext(GlobalDispatchContext)
-  const ref = useRef()
+  const state = useContext(GlobalStateContext)
+  // const ref = useRef()
   const {
     contentful_id,
     tempo,
@@ -39,11 +59,11 @@ const SongCard = ({ song }) => {
     mood,
   } = song
 
-  useEffect(() => {
-    // Every time the component has been re-rendered,
-    // the counter is incremented
-    console.log(ref.current)
-  })
+  // useEffect(() => {
+  //   console.log(ref.current)
+  // })
+
+  console.log(state.currentTime)
 
   const renderList = category => {
     const isLarge = category && category.length > listLength
@@ -134,15 +154,27 @@ const SongCard = ({ song }) => {
             type="button"
             className={styles.button}
           >
-            {/* <Pause /> */}
-            <FaPlay />
+            {state.currentTrackUrl === audio.file.url && state.isPlaying ? (
+              <FaPause />
+            ) : (
+              <FaPlay />
+            )}
           </button>
           <div className={styles.waveform}>
             {waveformImage && (
-              <Img
-                imgStyle={{ objectFit: "contain" }}
-                fluid={waveformImage.fluid}
-              />
+              <div className={styles.imageWrapper}>
+                <StyledImg
+                  isCurrent={state.currentTrackUrl === audio.file.url}
+                  width={state.currentTime}
+                  src={waveformImage.fluid.src}
+                />
+                {state.currentTrackUrl === audio.file.url && (
+                  <StyledOverlayImg
+                    width={state.currentTime}
+                    src={waveformImage.fluid.src}
+                  />
+                )}
+              </div>
             )}
           </div>
         </div>

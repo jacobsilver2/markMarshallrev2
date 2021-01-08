@@ -46,6 +46,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1.5em;
+  outline: none;
 }
 
 .button {
@@ -53,10 +54,16 @@
   padding: 1.5em;
   border-radius: 9999px;
   background: var(--red);
+  outline: none;
 }
 
 .button:hover {
   background: darkred;
+  outline: none;
+}
+
+.button:focus {
+  outline: none;
 }
 
 .waveform {
@@ -64,6 +71,10 @@
   padding-left: 1em;
   /* height: 100%; */
   width: 100%;
+  position: relative;
+}
+
+.imageWrapper {
   position: relative;
 }
 

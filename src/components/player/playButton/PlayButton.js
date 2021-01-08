@@ -30,10 +30,10 @@ const PlayButton = forwardRef((props, ref) => {
   function handleClick(e) {
     if (!playing) {
       soundCloudAudio && soundCloudAudio.play()
-      // dispatch({ type: "SET_ISPLAYING_TRUE" })
+      dispatch({ type: "SET_ISPLAYING_TRUE" })
     } else {
       soundCloudAudio && soundCloudAudio.pause()
-      // dispatch({ type: "SET_ISPLAYING_FALSE" })
+      dispatch({ type: "SET_ISPLAYING_FALSE" })
     }
 
     onTogglePlay && onTogglePlay(e)

@@ -5,6 +5,8 @@
   grid-template-areas: "play title volume progress time";
   grid-gap: 2em;
   align-items: center;
+  overflow: hidden;
+  padding: 0.25em 0;
 }
 .play {
   grid-area: play;
@@ -29,18 +31,19 @@
 @media screen and (max-width: 1023px) {
   .container {
     font-size: smaller;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 0px;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-gap: 0.5em;
     grid-template-areas:
-      "play title volume"
-      "time progress progress";
+      "title title title title"
+      "play volume progress time";
   }
   .play {
     justify-self: center;
   }
   .title {
     justify-self: center;
+    align-self: end;
   }
   .volume {
     justify-self: center;

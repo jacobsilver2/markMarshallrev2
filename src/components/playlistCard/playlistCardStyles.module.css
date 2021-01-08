@@ -52,8 +52,9 @@
 
 .title {
   position: absolute;
-  font-family: "corso";
+  /* font-family: "corso"; */
   letter-spacing: 2px;
+  text-transform: uppercase;
   font-size: 1.5em;
   width: 100%;
   top: 3%;

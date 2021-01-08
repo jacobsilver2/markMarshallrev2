@@ -26,6 +26,13 @@ const Player = withCustomAudio(props => {
     soundCloudAudio,
   } = props
 
+  useEffect(() => {
+    dispatch({
+      type: "SET_CURRENT_TRACK_POSITION",
+      currentTime: (currentTime / duration) * 100,
+    })
+  }, [currentTime])
+
   return (
     <div className={styles.container}>
       <div className={styles.play}>

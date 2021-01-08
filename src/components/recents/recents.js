@@ -32,17 +32,17 @@ const Recents = ({ model, items }) => {
 
   const mappedItems = items.nodes.map(item => {
     return (
-      <div key={item.contentful_id} className={styles.item}>
-        <button
-          onClick={
-            model === "songs"
-              ? () => handlePlayPause(item.audio.file.url, item.title)
-              : () => handlePlaylistClick(item)
-          }
-        >
-          <h1>{item.title}</h1>
-        </button>
-      </div>
+      <button
+        key={item.contentful_id}
+        className={styles.item}
+        onClick={
+          model === "songs"
+            ? () => handlePlayPause(item.audio.file.url, item.title)
+            : () => handlePlaylistClick(item)
+        }
+      >
+        <h1>{item.title}</h1>
+      </button>
     )
   })
 
@@ -96,13 +96,13 @@ const RecentClickedPlaylist = ({ playlist }) => {
   return (
     <div className={styles.clickedPlaylistContainer}>
       {playlist.songs.map(song => (
-        <div key={song.contentful_id} className={styles.item}>
-          <button
-            onClick={() => handlePlayPause(song.audio.file.url, song.title)}
-          >
-            <h1>{song.title}</h1>
-          </button>
-        </div>
+        <button
+          key={song.contentful_id}
+          className={styles.item}
+          onClick={() => handlePlayPause(song.audio.file.url, song.title)}
+        >
+          <h1>{song.title}</h1>
+        </button>
       ))}
     </div>
   )

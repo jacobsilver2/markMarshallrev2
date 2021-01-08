@@ -6,7 +6,7 @@ export const GlobalDispatchContext = createContext()
 const initialState = {
   currentTrackUrl: "",
   currentTrackTitle: "---",
-  currentTrackPosition: 0,
+  currentTime: 0,
   isPlaying: false,
   modalOpen: false,
   flippedPlaylistCard: null,
@@ -24,7 +24,7 @@ function reducer(state, action) {
     case "SET_CURRENT_TRACK_POSITION": {
       return {
         ...state,
-        currentTrackPosition: action.position,
+        currentTime: action.currentTime,
       }
     }
     case "SET_ISPLAYING_TRUE": {

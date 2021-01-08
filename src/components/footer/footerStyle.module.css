@@ -6,6 +6,7 @@
 
 @media screen and (max-width: 1023px) {
   .container {
+    /* max-height: 100px; */
     padding: 0 1em;
   }
 }

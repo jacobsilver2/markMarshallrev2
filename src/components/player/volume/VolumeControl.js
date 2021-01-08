@@ -2,6 +2,8 @@ import React from "react"
 // import { VolumeIconLoudSVG, VolumeIconMuteSVG } from "../icons/Icons"
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa"
 import volumeStyles from "./soundPlayerVolume.module.css"
+import ReactSlider from "react-slider"
+import Slider from "../../slider/slider"
 // import playButtonStyles from "./soundPlayerButton.module.css"
 
 const VolumeControl = props => {

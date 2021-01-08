@@ -7,9 +7,29 @@ import {
   GlobalStateContext,
   GlobalDispatchContext,
 } from "../../context/provider"
+import styled from "styled-components"
+
+const StyledImg = styled.img`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  clip-path: ${({ width, isCurrent }) =>
+    isCurrent ? `inset(0 0 0 ${width}% )` : ""};
+`
+
+const StyledOverlayImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: ${({ width }) => `inset(0 ${100 - width}% 0 0 )`};
+  filter: opacity(0.5) drop-shadow(0 0 0 var(--main-bg-color));
+`
 
 const Song = ({ song }) => {
   const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
   // console.log(song)
 
   function handlePlayPause() {
@@ -92,15 +112,32 @@ const Song = ({ song }) => {
             type="button"
             className={styles.button}
           >
-            {/* <Pause /> */}
-            <FaPlay />
+            {state.currentTrackUrl === song.audio.file.url &&
+            state.isPlaying ? (
+              <FaPause />
+            ) : (
+              <FaPlay />
+            )}
           </button>
           {song.waveformImage && (
             <div className={styles.waveformImage}>
-              <Img
+              {/* <Img
                 imgStyle={{ objectFit: "contain" }}
                 fluid={song.waveformImage.fluid}
-              />
+              /> */}
+              <div className={styles.imageWrapper}>
+                <StyledImg
+                  isCurrent={state.currentTrackUrl === song.audio.file.url}
+                  width={state.currentTime}
+                  src={song.waveformImage.fluid.src}
+                />
+                {state.currentTrackUrl === song.audio.file.url && (
+                  <StyledOverlayImg
+                    width={state.currentTime}
+                    src={song.waveformImage.fluid.src}
+                  />
+                )}
+              </div>
             </div>
           )}
         </div>
