@@ -8,7 +8,7 @@ const Music = ({ songs, pageContext }) => {
   return (
     <div className={styles.container}>
       <div className={styles.topbar}>
-        <Sort />
+        {/* <Sort hidden={true} /> */}
         <Paginator pageContext={pageContext} />
       </div>
       <ul>

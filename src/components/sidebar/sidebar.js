@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, navigate } from "gatsby"
 import tempoCalc from "../../lib/tempoCalc"
-import GimmeTippy from "./sidebarContent"
 import sortArrayAlphabetically from "../../lib/sortArrayAlphabetically"
 import useWindowSize from "../../hooks/useWindowSize"
 import styles from "./sidebarStyle.module.css"
 import CollapsibleContent from "../sidebarContentCollapsible/sidebarContentCollapsible"
+import { FaCaretDown, FaCaretRight } from "react-icons/fa"
 
 const Sidebar = () => {
   const [queryArr, setQueryArr] = useState([])
@@ -68,23 +68,20 @@ const Sidebar = () => {
   function removeFilter(f) {
     setQueryArr(prev => prev.filter(q => q !== f))
   }
+
+  const mobileTitleButton = (
+    <button onClick={() => setDropdown(prev => !prev)}>
+      FILTER
+      <span>{dropdown ? <FaCaretDown /> : <FaCaretRight />}</span>
+    </button>
+  )
+
+  const desktopTitle = <h1>FILTER</h1>
+
   return (
     <nav className={styles.container}>
       <div className={styles.filtersTitle}>
-        <h1 style={{ display: "inline" }}>FILTER</h1>
-        {size.width < 1024 ? (
-          <button onClick={() => setDropdown(prev => !prev)}>
-            <svg
-              className="h-3 fill-current inline"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-            </svg>
-          </button>
-        ) : (
-          ""
-        )}
+        {size.width < 1024 ? mobileTitleButton : desktopTitle}
       </div>
       {dropdown ? (
         <>

@@ -61,6 +61,16 @@
   left: 0;
 }
 
+.description {
+  color: var(--yellow);
+  max-height: 5em;
+  /* max-height: 5ch; */
+}
+
+.description p {
+  line-height: 1.5em;
+}
+
 .flip .flipCardInner {
   transform: rotateY(180deg);
 }

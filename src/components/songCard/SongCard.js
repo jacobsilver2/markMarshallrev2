@@ -63,7 +63,7 @@ const SongCard = ({ song }) => {
   //   console.log(ref.current)
   // })
 
-  console.log(state.currentTime)
+  // console.log(state.currentTime)
 
   const renderList = category => {
     const isLarge = category && category.length > listLength

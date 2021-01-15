@@ -1,0 +1,22 @@
+.container {
+  background: white;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.dropzone {
+  height: 8rem;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px dashed var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.active {
+  border: 2px solid var(--yellow);
+}

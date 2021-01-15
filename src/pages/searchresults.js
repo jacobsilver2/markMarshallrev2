@@ -1,6 +1,7 @@
 import React from "react"
 import { navigate, Link, useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from "react-use-flexsearch"
+import { tempoCategories } from "../lib/tempoCalc"
 import SearchResultsComponent from "../components/searchResults/searchResults"
 
 const SearchResults = ({ location }) => {

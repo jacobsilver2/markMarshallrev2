@@ -1,8 +1,8 @@
 import React from "react"
 import { AuthService, useAuth } from "gatsby-theme-auth0"
-import UploadSong from "../components/uploadSong/uploadSong"
+import GenerateWaveform from "../components/uploadSong/uploadSong"
 
-const DashboardPage = () => {
+const WaveformGenerator = () => {
   const { isLoggedIn } = useAuth()
   return (
     <>
@@ -13,9 +13,9 @@ const DashboardPage = () => {
           Login
         </button>
       )}
-      {/* {isLoggedIn && <UploadSong />} */}
+      {isLoggedIn && <GenerateWaveform />}
     </>
   )
 }
 
-export default DashboardPage
+export default WaveformGenerator

@@ -102,6 +102,16 @@ module.exports = {
                 soundsLike
                 tempo
                 createdAt
+                audio {
+                  file {
+                    url
+                  }
+                }
+                waveformImage {
+                  fluid {
+                    src
+                  }
+                }
               }
             }
           }
@@ -136,6 +146,8 @@ module.exports = {
             mood: node.mood,
             soundsLike: node.soundsLike,
             tempo: node.tempo,
+            audio: node.audio,
+            waveformImage: node.waveformImage ? node.waveformImage : "",
           })),
       },
     },

@@ -6,6 +6,7 @@ import styles from "./searchResultsStyles.module.css"
 const SearchResults = ({ results }) => {
   const mappedResults = results.length
     ? results.map(result => {
+        // console.log(result)
         return <SongCard key={result.id} song={result} />
       })
     : ""

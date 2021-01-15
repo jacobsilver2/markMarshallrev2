@@ -32,6 +32,11 @@ export const playlistData = graphql`
         songs {
           id
           title
+          audio {
+            file {
+              url
+            }
+          }
         }
         updatedAt
       }

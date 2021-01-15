@@ -31,7 +31,7 @@ const Navlinks = () => {
         <li>
           <div className={styles.link}>
             <button onClick={() => setIsToggled(prev => !prev)}>
-              Dashboard
+              DASHBOARD
               <svg
                 className="h-3 fill-current inline"
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,8 +43,8 @@ const Navlinks = () => {
             <div
               className={`${styles.dropdown} ${isToggled ? styles.toggle : ""}`}
             >
-              <Link to="/dashboard" className={styles.link}>
-                Dashboard
+              <Link to="/waveformGenerator" className={styles.link}>
+                Generate Waveform Image
               </Link>
               <div className={styles.space}></div>
               <button onClick={AuthService.logout} className={styles.link}>
