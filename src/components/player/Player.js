@@ -27,6 +27,31 @@ const Player = withCustomAudio(props => {
   } = props
 
   useEffect(() => {
+    if (!streamUrl) {
+      return
+    }
+    setLoading(true)
+    if (!playing) {
+      setTimeout(() => {
+        soundCloudAudio.play({ streamUrl })
+        setLoading(false)
+        dispatch({ type: "SET_ISPLAYING_TRUE" })
+      }, 2)
+      return
+    }
+    soundCloudAudio.play()
+  }, [streamUrl])
+
+  useEffect(() => {
+    if (!state.isPlaying) {
+      soundCloudAudio.pause()
+    }
+    if (state.isPlaying) {
+      soundCloudAudio.play()
+    }
+  }, [state.isPlaying])
+
+  useEffect(() => {
     dispatch({
       type: "SET_CURRENT_TRACK_POSITION",
       currentTime: (currentTime / duration) * 100,

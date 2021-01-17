@@ -36,7 +36,7 @@ const PlayButton = forwardRef((props, ref) => {
       dispatch({ type: "SET_ISPLAYING_FALSE" })
     }
 
-    onTogglePlay && onTogglePlay(e)
+    // onTogglePlay && onTogglePlay(e)
   }
 
   let iconNode

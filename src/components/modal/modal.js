@@ -89,9 +89,9 @@ const Modal = () => {
               <li className={styles.link}>
                 <Link
                   onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
-                  to="/dashboard"
+                  to="/waveformGenerator"
                 >
-                  Dashboard
+                  Waveform
                 </Link>
               </li>
               <li className={styles.link}>

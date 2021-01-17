@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone"
 import {
   Image,
   Audio,
+  Video,
   CloudinaryContext,
   Transformation,
 } from "cloudinary-react"
@@ -62,14 +63,22 @@ const UploadSong = () => {
         <input {...getInputProps()} />
         Drag an audio file into here generate a waveform image.
       </div>
-      {/* <CloudinaryContext cloudName={process.env.GATSBY_CLOUDINARY_PUBLIC_ID}>
+      <CloudinaryContext cloudName={process.env.GATSBY_CLOUDINARY_PUBLIC_ID}>
         {audioFiles &&
           audioFiles.map(file => (
             <div key={file.public_id}>
-              <Audio controls publicId={file.public_id} />
+              {/* <Audio controls publicId={file.public_id} /> */}
+              <Video
+                publicId={file.public_id}
+                format="mp4"
+                resourceType="video"
+                cloudName="dplx6jxxo"
+              >
+                <Transformation height="400" width="500" flags="waveform" />
+              </Video>
             </div>
           ))}
-      </CloudinaryContext> */}
+      </CloudinaryContext>
       {isLoading && <p>Generating Waveform Image</p>}
       {waveformImages &&
         waveformImages.map(wfImg => <img key={wfImg.url} src={wfImg.url} />)}

@@ -86,14 +86,19 @@ const SongCard = ({ song }) => {
   }
 
   function handlePlayPause() {
-    dispatch({
-      type: "SET_CURRENT_TRACK",
-      url: audio.file.url,
-      title,
-    })
-    dispatch({
-      type: "TOGGLE_PLAYING",
-    })
+    if (state.currentTrackUrl !== audio.file.url) {
+      dispatch({
+        type: "SET_CURRENT_TRACK",
+        url: audio.file.url,
+        title,
+      })
+    }
+    if (state.currentTrackUrl === audio.file.url && state.isPlaying) {
+      dispatch({ type: "SET_ISPLAYING_FALSE" })
+    }
+    if (state.currentTrackUrl === audio.file.url && !state.isPlaying) {
+      dispatch({ type: "SET_ISPLAYING_TRUE" })
+    }
   }
   return (
     <div className={styles.container}>
