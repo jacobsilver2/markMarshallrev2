@@ -19,6 +19,7 @@
   grid-area: filters;
   width: 100%;
   padding: 0;
+  /* height: auto; */
 }
 
 .filterlist {
@@ -108,6 +109,13 @@
 }
 
 @media screen and (max-width: 1023px) {
+  .container {
+    padding: 0.5em 0;
+  }
+
+  .filters {
+  }
+
   .filterCategories {
     padding: 2em 0;
     display: grid;

@@ -9,7 +9,6 @@ import SearchBar from "../search/searchbar"
 import Hamburger from "hamburger-react"
 import useWindowSize from "../../hooks/useWindowSize"
 import styles from "./headerStyle.module.css"
-// import modalStyles from "./modalStyle.module.css"
 import Navlinks from "../navlinks/navlinks"
 import Img from "gatsby-image"
 

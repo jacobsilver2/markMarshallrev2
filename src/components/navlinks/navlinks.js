@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import { AuthService, useAuth } from "gatsby-theme-auth0"
 import { Link } from "gatsby"
 import styles from "./navLinkStyle.module.css"
 import navLinksArr from "../../lib/navLinksArr"
+import useOutsideClick from "../../hooks/useOutsideClick"
 
 const mappedNavLinks = navLinksArr.map(navLink => (
   <li className={styles.link} key={navLink.name}>
@@ -11,8 +12,14 @@ const mappedNavLinks = navLinksArr.map(navLink => (
 ))
 
 const Navlinks = () => {
+  const ref = useRef()
   const [isToggled, setIsToggled] = useState(true)
-  const { isLoggedIn, profile } = useAuth()
+  const { isLoggedIn } = useAuth()
+
+  useOutsideClick(ref, () => {
+    setIsToggled(true)
+  })
+
   return (
     <>
       <li className={styles.link}>
@@ -28,7 +35,7 @@ const Navlinks = () => {
         <Link to="/contact">CONTACT</Link>
       </li>
       {isLoggedIn ? (
-        <li>
+        <li ref={ref}>
           <div className={styles.link}>
             <button onClick={() => setIsToggled(prev => !prev)}>
               DASHBOARD
@@ -43,7 +50,11 @@ const Navlinks = () => {
             <div
               className={`${styles.dropdown} ${isToggled ? styles.toggle : ""}`}
             >
-              <Link to="/waveformGenerator" className={styles.link}>
+              <Link
+                onClick={() => setIsToggled(true)}
+                to="/waveformGenerator"
+                className={styles.link}
+              >
                 Generate Waveform Image
               </Link>
               <div className={styles.space}></div>

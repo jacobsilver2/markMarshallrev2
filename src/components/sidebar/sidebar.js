@@ -5,6 +5,8 @@ import sortArrayAlphabetically from "../../lib/sortArrayAlphabetically"
 import useWindowSize from "../../hooks/useWindowSize"
 import styles from "./sidebarStyle.module.css"
 import CollapsibleContent from "../sidebarContentCollapsible/sidebarContentCollapsible"
+import { SlideDown } from "react-slidedown"
+import "react-slidedown/lib/slidedown.css"
 import { FaCaretDown, FaCaretRight } from "react-icons/fa"
 
 const Sidebar = () => {
@@ -85,84 +87,86 @@ const Sidebar = () => {
       </div>
       {dropdown ? (
         <>
-          <div className={styles.filters}>
-            <ul className={styles.filterCategories}>
-              <CollapsibleContent
-                queryArr={queryArr}
-                setQueryArr={setQueryArr}
-                category="Genre"
-                values={genresArr}
-              />
-              <CollapsibleContent
-                queryArr={queryArr}
-                setQueryArr={setQueryArr}
-                category="Composer"
-                values={composersArr}
-              />
-              <CollapsibleContent
-                queryArr={queryArr}
-                setQueryArr={setQueryArr}
-                category="Tempo"
-                values={temposArr}
-              />
-              <CollapsibleContent
-                queryArr={queryArr}
-                setQueryArr={setQueryArr}
-                category="Sounds Like"
-                values={soundsLikeArr}
-              />
-              <CollapsibleContent
-                queryArr={queryArr}
-                setQueryArr={setQueryArr}
-                category="Instrumentation"
-                values={instrumentationArr}
-              />
-              <CollapsibleContent
-                queryArr={queryArr}
-                setQueryArr={setQueryArr}
-                category="Mood"
-                values={moodArr}
-              />
-            </ul>
-          </div>
-
-          <div className={styles.filterlist}>
-            <p>Selected Filters:</p>
-            <div>
-              <ul className={styles.selectedFilters}>
-                {queryArr.length ? (
-                  <>
-                    {queryArr.map(q => (
-                      <li key={q}>
-                        {q}
-                        <button onClick={() => removeFilter(q)}>
-                          (remove)
-                        </button>
-                      </li>
-                    ))}
-                  </>
-                ) : (
-                  <li>---</li>
-                )}
+          <SlideDown>
+            <div className={styles.filters}>
+              <ul className={styles.filterCategories}>
+                <CollapsibleContent
+                  queryArr={queryArr}
+                  setQueryArr={setQueryArr}
+                  category="Genre"
+                  values={genresArr}
+                />
+                <CollapsibleContent
+                  queryArr={queryArr}
+                  setQueryArr={setQueryArr}
+                  category="Composer"
+                  values={composersArr}
+                />
+                <CollapsibleContent
+                  queryArr={queryArr}
+                  setQueryArr={setQueryArr}
+                  category="Tempo"
+                  values={temposArr}
+                />
+                <CollapsibleContent
+                  queryArr={queryArr}
+                  setQueryArr={setQueryArr}
+                  category="Sounds Like"
+                  values={soundsLikeArr}
+                />
+                <CollapsibleContent
+                  queryArr={queryArr}
+                  setQueryArr={setQueryArr}
+                  category="Instrumentation"
+                  values={instrumentationArr}
+                />
+                <CollapsibleContent
+                  queryArr={queryArr}
+                  setQueryArr={setQueryArr}
+                  category="Mood"
+                  values={moodArr}
+                />
               </ul>
             </div>
-            <div className={styles.buttonContainer}>
-              <button
-                onClick={handleSearch}
-                className={styles.buttons}
-                type="text"
-              >
-                Search
-              </button>
-              <button
-                onClick={() => setQueryArr([])}
-                className={styles.buttons}
-                type="text"
-              >
-                Clear Filters
-              </button>
+
+            <div className={styles.filterlist}>
+              <p>Selected Filters:</p>
+              <div>
+                <ul className={styles.selectedFilters}>
+                  {queryArr.length ? (
+                    <>
+                      {queryArr.map(q => (
+                        <li key={q}>
+                          {q}
+                          <button onClick={() => removeFilter(q)}>
+                            (remove)
+                          </button>
+                        </li>
+                      ))}
+                    </>
+                  ) : (
+                    <li>---</li>
+                  )}
+                </ul>
+              </div>
+              <div className={styles.buttonContainer}>
+                <button
+                  onClick={handleSearch}
+                  className={styles.buttons}
+                  type="text"
+                >
+                  Search
+                </button>
+                <button
+                  onClick={() => setQueryArr([])}
+                  className={styles.buttons}
+                  type="text"
+                >
+                  Clear Filters
+                </button>
+              </div>
             </div>
-          </div>
+          </SlideDown>
         </>
       ) : (
         ""

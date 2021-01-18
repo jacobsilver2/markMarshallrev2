@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react"
+import Loader from "react-loader-spinner"
 import { withCustomAudio } from "react-soundplayer/addons"
-import { Timer, Icons } from "react-soundplayer/components"
+import { Timer } from "react-soundplayer/components"
 import {
   GlobalStateContext,
   GlobalDispatchContext,
@@ -18,11 +19,9 @@ const Player = withCustomAudio(props => {
   const {
     streamUrl,
     trackTitle,
-    volume,
     currentTime,
     duration,
     playing,
-    seeking,
     soundCloudAudio,
   } = props
 
@@ -32,11 +31,13 @@ const Player = withCustomAudio(props => {
     }
     setLoading(true)
     if (!playing) {
+      soundCloudAudio.on("canplay", () => {
+        setLoading(false)
+      })
       setTimeout(() => {
         soundCloudAudio.play({ streamUrl })
-        setLoading(false)
         dispatch({ type: "SET_ISPLAYING_TRUE" })
-      }, 2)
+      }, 100)
       return
     }
     soundCloudAudio.play()
@@ -60,9 +61,13 @@ const Player = withCustomAudio(props => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.play}>
-        <PlayButton {...props} />
-      </div>
+      {loading ? (
+        <Loader type="Audio" color="#FFFFFF" height={30} width={30} />
+      ) : (
+        <div className={styles.play}>
+          <PlayButton {...props} />
+        </div>
+      )}
       <div className={styles.title}>
         <h2>{trackTitle}</h2>
       </div>

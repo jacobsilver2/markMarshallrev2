@@ -1,23 +1,13 @@
-import React, {
-  useContext,
-  useRef,
-  useEffect,
-  useImperativeHandle,
-} from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import {
   GlobalStateContext,
   GlobalDispatchContext,
 } from "../../context/provider"
-import Img from "gatsby-image"
-import Pause from "../../assets/svg/pause"
 import tempoCalc from "../../lib/tempoCalc"
-// import Play from "../assets/svg/play"
-// import PlayButton from "../assets/svg/PlayButton.svg"
 import slugify from "../../lib/slugify"
 import styles from "./songCardStyle.module.css"
 import styled from "styled-components"
-// import PlayComponent from "../player/playButton/PlayButton"
 import { FaPlay, FaPause } from "react-icons/fa"
 
 const listLength = 3
@@ -43,27 +33,17 @@ const StyledOverlayImg = styled.img`
 const SongCard = ({ song }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
-  // const ref = useRef()
   const {
-    contentful_id,
     tempo,
     soundsLike,
     instrumentation,
     waveformImage,
     audio,
     title,
-    description,
     composer,
-    createAt,
     genre,
     mood,
   } = song
-
-  // useEffect(() => {
-  //   console.log(ref.current)
-  // })
-
-  // console.log(state.currentTime)
 
   const renderList = category => {
     const isLarge = category && category.length > listLength
@@ -74,15 +54,6 @@ const SongCard = ({ song }) => {
         ` ...and ${remainingCats} more.`
     const notTruncated = !isLarge && category.join(", ")
     return truncated || notTruncated
-  }
-
-  const truncateParagraph = paragraph => {
-    const arr = paragraph.split(".")
-    if (arr.length > 1) {
-      return arr.slice(0, 1) + "..."
-    }
-
-    return paragraph
   }
 
   function handlePlayPause() {

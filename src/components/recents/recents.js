@@ -1,17 +1,11 @@
 import React, { useContext, useState } from "react"
-import { Link } from "gatsby"
 import styles from "./recentsStyles.module.css"
-import slugify from "../../lib/slugify"
-import {
-  GlobalStateContext,
-  GlobalDispatchContext,
-} from "../../context/provider"
+import { GlobalDispatchContext } from "../../context/provider"
 
 const Recents = ({ model, items }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [playlistClickedToggle, setPlaylistClickedToggle] = useState(false)
   const [clickedPlaylist, setClickedPlaylist] = useState({})
-  // console.log(model)
 
   function handlePlayPause(url, title) {
     dispatch({
@@ -19,15 +13,11 @@ const Recents = ({ model, items }) => {
       url,
       title,
     })
-    dispatch({
-      type: "TOGGLE_PLAYING",
-    })
   }
 
   function handlePlaylistClick(item) {
     setClickedPlaylist(item)
     setPlaylistClickedToggle(prev => !prev)
-    // console.log("playlist click")
   }
 
   const mappedItems = items.nodes.map(item => {
@@ -88,9 +78,6 @@ const RecentClickedPlaylist = ({ playlist }) => {
       type: "SET_CURRENT_TRACK",
       url,
       title,
-    })
-    dispatch({
-      type: "TOGGLE_PLAYING",
     })
   }
   return (
