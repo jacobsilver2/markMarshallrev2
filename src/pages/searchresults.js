@@ -16,7 +16,7 @@ const SearchResults = ({ location }) => {
   `)
 
   const { localSearchSongs } = data
-  const { query } = location.state
+  const { query } = location.state ? location.state : ""
 
   const results = useFlexSearch(
     query,
