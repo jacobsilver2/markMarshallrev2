@@ -1,21 +1,11 @@
 import React, { useState, useCallback } from "react"
 import { useDropzone } from "react-dropzone"
-import {
-  Image,
-  Audio,
-  Video,
-  CloudinaryContext,
-  Transformation,
-} from "cloudinary-react"
+import { Image, CloudinaryContext, Transformation } from "cloudinary-react"
 import styles from "./uploadSongStyles.module.css"
 
 const UploadSong = () => {
-  const [waveformImages, setWaveformImages] = useState([])
   const [audioFiles, setAudioFiles] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const onDrop = useCallback(acceptedFiles => {
-    // console.log(acceptedFiles)
-
     acceptedFiles.forEach(async acceptedFile => {
       const formData = new FormData()
       formData.append("file", acceptedFile)
@@ -27,26 +17,8 @@ const UploadSong = () => {
       })
       const data = await response.json()
       setAudioFiles(old => [...old, data])
-      // console.log(data)
-      await createWaveformImage(data.url)
     })
   }, [])
-
-  const createWaveformImage = async url => {
-    const newUrl = url
-      .replace(
-        "http://res.cloudinary.com/dplx6jxxo/video/upload/",
-        "https://res.cloudinary.com/dplx6jxxo/video/upload/fl_waveform,co_grey,b_transparent/"
-      )
-      .replace("mp3", "png")
-    setIsLoading(true)
-    const response = await fetch(newUrl)
-    // console.log(response)
-    // const data = await response.json()
-    // console.log(data)
-    setWaveformImages(old => [...old, response])
-    setIsLoading(false)
-  }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -67,21 +39,20 @@ const UploadSong = () => {
         {audioFiles &&
           audioFiles.map(file => (
             <div key={file.public_id}>
-              {/* <Audio controls publicId={file.public_id} /> */}
-              <Video
-                publicId={file.public_id}
-                format="mp4"
+              <Image
+                publicId={`${file.public_id}.png`}
                 resourceType="video"
                 cloudName="dplx6jxxo"
               >
-                <Transformation height="400" width="500" flags="waveform" />
-              </Video>
+                <Transformation
+                  flags="waveform"
+                  color="grey"
+                  background="transparent"
+                />
+              </Image>
             </div>
           ))}
       </CloudinaryContext>
-      {isLoading && <p>Generating Waveform Image</p>}
-      {waveformImages &&
-        waveformImages.map(wfImg => <img key={wfImg.url} src={wfImg.url} />)}
     </div>
   )
 }
