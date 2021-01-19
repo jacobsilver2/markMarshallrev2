@@ -64,10 +64,18 @@ const SongCard = ({ song }) => {
         title,
       })
     }
-    if (state.currentTrackUrl === audio.file.url && state.isPlaying) {
+    if (
+      state.currentTrackUrl &&
+      state.currentTrackUrl === audio.file.url &&
+      state.isPlaying
+    ) {
       dispatch({ type: "SET_ISPLAYING_FALSE" })
     }
-    if (state.currentTrackUrl === audio.file.url && !state.isPlaying) {
+    if (
+      state.currentTrackUrl &&
+      state.currentTrackUrl === audio.file.url &&
+      !state.isPlaying
+    ) {
       dispatch({ type: "SET_ISPLAYING_TRUE" })
     }
   }
@@ -130,7 +138,9 @@ const SongCard = ({ song }) => {
             type="button"
             className={styles.button}
           >
-            {state.currentTrackUrl === audio.file.url && state.isPlaying ? (
+            {state.currentTrackUrl &&
+            state.currentTrackUrl === audio.file.url &&
+            state.isPlaying ? (
               <FaPause />
             ) : (
               <FaPlay />
@@ -140,16 +150,20 @@ const SongCard = ({ song }) => {
             {waveformImage && (
               <div className={styles.imageWrapper}>
                 <StyledImg
-                  isCurrent={state.currentTrackUrl === audio.file.url}
+                  isCurrent={
+                    state.currentTrackUrl &&
+                    state.currentTrackUrl === audio.file.url
+                  }
                   width={state.currentTime}
                   src={waveformImage.fluid.src}
                 />
-                {state.currentTrackUrl === audio.file.url && (
-                  <StyledOverlayImg
-                    width={state.currentTime}
-                    src={waveformImage.fluid.src}
-                  />
-                )}
+                {state.currentTrackUrl &&
+                  state.currentTrackUrl === audio.file.url && (
+                    <StyledOverlayImg
+                      width={state.currentTime}
+                      src={waveformImage.fluid.src}
+                    />
+                  )}
               </div>
             )}
           </div>
