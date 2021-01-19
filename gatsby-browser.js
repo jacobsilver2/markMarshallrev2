@@ -1,15 +1,3 @@
-import React from "react"
-import GlobalContextProvider from "./src/context/provider"
-import Layout from "./src/components/layout/layout"
-import "tailwindcss/base.css"
-import "tailwindcss/components.css"
-import "tailwindcss/utilities.css"
-import "./src/assets/tailwind.css"
+import { wrapRootElement as wrap } from "./rootWrapper"
 
-export const wrapRootElement = ({ element, props }) => {
-  return (
-    <GlobalContextProvider>
-      <Layout {...props}>{element}</Layout>
-    </GlobalContextProvider>
-  )
-}
+export const wrapPageElement = wrap
