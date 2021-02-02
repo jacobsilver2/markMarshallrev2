@@ -16,15 +16,7 @@ const Layout = ({ children }) => {
       <Modal />
       <Header />
       <Sidebar />
-      <main
-        style={{
-          backgroundImage: `url(${bg})`,
-          objectFit: "none",
-          backgroundSize: "200px",
-        }}
-      >
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </div>
   )

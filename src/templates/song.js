@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Seo from "../components/seo"
 import SongComponent from "../components/song/song"
 
 const SongTemplate = props => {
@@ -20,6 +21,7 @@ const SongTemplate = props => {
 
   return (
     <>
+      <Seo title={props.data.song.title} />
       <SongComponent song={props.data.song} />
     </>
   )

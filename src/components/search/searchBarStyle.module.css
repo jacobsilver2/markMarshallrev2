@@ -1,5 +1,5 @@
 .container {
-  color: white;
+  color: var(--text);
   font-size: x-large;
   display: flex;
 }
@@ -16,8 +16,8 @@ form {
 .input {
   width: 100%;
   background: transparent;
-  color: white;
-  border-bottom: 1px solid gray;
+  color: var(--text);
+  border-bottom: 1px solid var(--grey);
   padding: 0.5em 0.25em;
   padding-left: 2em;
 }
@@ -41,7 +41,7 @@ form {
 .svg {
   fill: currentColor;
   pointer-events: none;
-  color: lightgray;
+  color: var(--grey);
   width: 1rem;
   height: 1rem;
 }

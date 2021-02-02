@@ -1,6 +1,7 @@
 .container {
-  background: white;
-  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid var(--grey);
+  /* border-radius: 8px; */
   margin-bottom: 1em;
   display: flex;
   padding: 2em;
@@ -20,7 +21,7 @@
 .title {
   width: 100%;
   font-size: 2em;
-  color: black;
+  color: var(--black);
 }
 
 .subtitleWrapper {
@@ -33,11 +34,11 @@
 .subtitle {
   /* padding-right: 0.5em; */
   font-size: small;
-  color: darkgray;
+  color: var(--darkGrey);
 }
 
 .subtitle b {
-  color: black;
+  color: var(--black);
 }
 
 .buttonContainer {
@@ -50,15 +51,15 @@
 }
 
 .button {
-  color: white;
+  color: var(--white);
   padding: 1.5em;
   border-radius: 9999px;
-  background: var(--red);
+  background: var(--highlight);
   outline: none;
 }
 
 .button:hover {
-  background: darkred;
+  background: var(--darkHighlight);
   outline: none;
 }
 
@@ -67,9 +68,7 @@
 }
 
 .waveform {
-  /* flex-grow: 1; */
   padding-left: 1em;
-  /* height: 100%; */
   width: 100%;
   position: relative;
 }

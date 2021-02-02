@@ -1,18 +1,19 @@
-import React, { useContext, useEffect } from "react"
+import React from "react"
 import Player from "../player/Player"
-import { GlobalStateContext } from "../../context/provider"
 import styles from "./footerStyle.module.css"
+import bg from "../../images/background.png"
 
 const Footer = () => {
-  const state = useContext(GlobalStateContext)
-
   return (
-    <footer className={styles.container}>
-      <Player
-        streamUrl={state.currentTrackUrl}
-        trackTitle={state.currentTrackTitle}
-        preloadType="auto"
-      />
+    <footer
+      style={{
+        backgroundImage: `url(${bg})`,
+        objectFit: "none",
+        backgroundSize: "200px",
+      }}
+      className={styles.container}
+    >
+      <Player />
     </footer>
   )
 }

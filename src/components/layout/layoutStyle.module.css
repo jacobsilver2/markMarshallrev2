@@ -1,20 +1,38 @@
 :root {
-  --main-bg-color: #1c2938;
+  --bg_1: #1c2938;
+  --black: black;
+  --grey: rgb(212, 212, 214);
+  --darkGrey: #707070;
   --purple: #9932cc;
-  --red: #dc143c;
+  --highlight: #dc143c;
+  --darkHighlight: darkred;
   --offWhite: rgb(212, 212, 214);
-  --yellow: rgb(202, 161, 118);
-  scrollbar-color: var(--red) var(--main-bg-color);
+  --white: white;
+  --text: white;
+  --yellow: #ecc938;
+  --beige: #f2f1e9;
+  --lightGreen: #869786;
+  --lightBlue: #5ea1c1;
+  --purple: #4a2e54;
+  --darkBlue: #0e6fa8;
+  --orange: #ad512a;
+  --red: #9f2b30;
+  --darkAvo: #8d872c;
+  --lightAvo: #b8af0c;
+  --forestGreen: #174a19;
+  --brown: #897209;
+  scrollbar-color: var(--highlight) var(--black);
   scrollbar-width: 8px;
+  font-size: 17px;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
-  background-color: var(--main-bg-color);
+  background-color: var(--black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--red);
+  background-color: var(--highlight);
   border-radius: 20px;
 }
 
@@ -34,7 +52,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--main-bg-color);
+  height: 100px;
+  /* background: var(--bg_1); */
 }
 
 nav {
@@ -43,19 +62,16 @@ nav {
 
 main {
   grid-area: main;
-  /* background: lightgray; */
   overflow: auto;
-  padding: 1em;
+  /* padding: 1em; */
 }
 
 footer {
   grid-area: footer;
   position: sticky;
   bottom: 0;
-}
-
-footer {
   padding: 1em;
+  height: 100px;
 }
 
 @media screen and (min-width: 1024px) {

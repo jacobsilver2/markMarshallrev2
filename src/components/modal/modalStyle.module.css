@@ -4,7 +4,7 @@
   text-align: center;
 }
 .close {
-  color: white;
+  color: var(--text);
   position: absolute;
   top: 5px;
   right: 10px;
@@ -18,7 +18,7 @@
 }
 
 .close:hover {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .container ul {
@@ -27,19 +27,18 @@
 
 .link {
   font-size: xx-large;
-  color: white;
+  color: var(--text);
 }
 
 .link a:hover {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .link button:hover {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .logo {
-  /* justify-self: center; */
   margin: 0 auto;
 
   transition: 0.7s;

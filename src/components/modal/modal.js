@@ -9,6 +9,7 @@ import {
 } from "../../context/provider"
 import styles from "./modalStyle.module.css"
 import navLinksArr from "../../lib/navLinksArr"
+import bg from "../../images/background.png"
 
 const customStyles = {
   content: {
@@ -18,7 +19,8 @@ const customStyles = {
     right: "10%",
     bottom: "10%",
     border: "1px solid #ccc",
-    background: "#1c2938",
+    // background: "#1c2938",
+    backgroundImage: `url(${bg})`,
     overflow: "auto",
     WebkitOverflowScrolling: "touch",
     borderRadius: "4px",
@@ -26,7 +28,7 @@ const customStyles = {
     padding: "20px",
   },
   overlay: {
-    zIndex: 2,
+    zIndex: 1000,
     position: "fixed",
     top: "0",
     left: "0",
@@ -83,7 +85,7 @@ const Modal = () => {
               </div>
             </Link>
           </li>
-          {mappedNavLinks}{" "}
+          {mappedNavLinks}
           {isLoggedIn ? (
             <>
               <li className={styles.link}>

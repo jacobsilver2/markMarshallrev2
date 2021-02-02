@@ -23,8 +23,8 @@ function slugify(string) {
 
 module.exports = {
   siteMetadata: {
-    title: `Mark Marshall v2`,
-    description: `Mark Marshall's kick-ass new site`,
+    title: `Future Relics`,
+    description: `Mark Marshall's Future Relics`,
     author: `Jacob Silver`,
   },
   plugins: [

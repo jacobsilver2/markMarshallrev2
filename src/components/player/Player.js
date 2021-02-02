@@ -1,87 +1,45 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useContext } from "react"
 import Loader from "react-loader-spinner"
-import { withCustomAudio } from "react-soundplayer/addons"
-import { Timer } from "react-soundplayer/components"
-import {
-  GlobalStateContext,
-  GlobalDispatchContext,
-} from "../../context/provider"
+import { GlobalStateContext } from "../../context/provider"
+import { useAudioPlayer } from "react-use-audio-player"
 import PlayButton from "./playButton/PlayButton"
-import Progress from "./progress/Progress"
+import Progress from "./progress/progress"
+import Timer from "./timer/timer"
 import VolumeControl from "./volume/VolumeControl"
 import styles from "./playerStyle.module.css"
 
-const Player = withCustomAudio(props => {
+const Player = () => {
   const state = useContext(GlobalStateContext)
-  const dispatch = useContext(GlobalDispatchContext)
-  const [loading, setLoading] = useState(false)
 
-  const {
-    streamUrl,
-    trackTitle,
-    currentTime,
-    duration,
-    playing,
-    soundCloudAudio,
-  } = props
-
-  useEffect(() => {
-    if (!streamUrl) {
-      return
-    }
-    setLoading(true)
-    if (!playing) {
-      soundCloudAudio.on("canplay", () => {
-        setLoading(false)
-      })
-      setTimeout(() => {
-        soundCloudAudio.play({ streamUrl })
-        dispatch({ type: "SET_ISPLAYING_TRUE" })
-      }, 100)
-      return
-    }
-    soundCloudAudio.play()
-  }, [streamUrl])
-
-  useEffect(() => {
-    if (!state.isPlaying) {
-      soundCloudAudio.pause()
-    }
-    if (state.isPlaying) {
-      soundCloudAudio.play()
-    }
-  }, [state.isPlaying])
-
-  useEffect(() => {
-    dispatch({
-      type: "SET_CURRENT_TRACK_POSITION",
-      currentTime: (currentTime / duration) * 100,
-    })
-  }, [currentTime])
+  const { togglePlayPause, loading, playing } = useAudioPlayer({
+    src: state.currentTrackUrl,
+    format: "mp3",
+    autoplay: true,
+  })
 
   return (
     <div className={styles.container}>
-      {loading ? (
+      {loading && state.currentTrackUrl ? (
         <Loader type="Audio" color="#FFFFFF" height={30} width={30} />
       ) : (
         <div className={styles.play}>
-          <PlayButton {...props} />
+          <PlayButton togglePlayPause={togglePlayPause} playing={playing} />
         </div>
       )}
       <div className={styles.title}>
-        <h2>{trackTitle}</h2>
+        <h2>{state.currentTrackTitle}</h2>
       </div>
       <div className={styles.volume}>
-        <VolumeControl {...props} />
+        <VolumeControl />
       </div>
       <div className={styles.progress}>
-        <Progress {...props} />
+        <Progress className="playBar__seek" />
       </div>
       <div className={styles.time}>
-        <Timer {...props} />
+        <Timer />
       </div>
     </div>
   )
-})
+}
 
 export default Player

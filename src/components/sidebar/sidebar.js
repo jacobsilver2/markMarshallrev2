@@ -7,6 +7,7 @@ import styles from "./sidebarStyle.module.css"
 import CollapsibleContent from "../sidebarContentCollapsible/sidebarContentCollapsible"
 import { SlideDown } from "react-slidedown"
 import "react-slidedown/lib/slidedown.css"
+import bg from "../../images/background.png"
 import { FaCaretDown, FaCaretRight } from "react-icons/fa"
 
 const Sidebar = () => {
@@ -158,7 +159,14 @@ const Sidebar = () => {
   )
 
   return (
-    <nav className={styles.container}>
+    <nav
+      style={{
+        backgroundImage: `url(${bg})`,
+        objectFit: "none",
+        backgroundSize: "200px",
+      }}
+      className={styles.container}
+    >
       <div className={styles.filtersTitle}>
         {size.width < 1024 ? mobileTitleButton : desktopTitle}
       </div>

@@ -1,37 +1,43 @@
-import React from "react"
-import styles from "./progressStyle.module.css"
+import React, { useCallback, useEffect, useRef, useState } from "react"
+import { useAudioPlayer, useAudioPosition } from "react-use-audio-player"
+import styles from "./progressStyles.module.css"
 
-const Progress = props => {
-  const { onSeekTrack, soundCloudAudio, currentTime, duration } = props
-  let { value } = props
-  function handleSeekTrack(e) {
-    const xPos =
-      (e.pageX - e.currentTarget.getBoundingClientRect().left) /
-      e.currentTarget.offsetWidth
-    if (soundCloudAudio && !isNaN(soundCloudAudio.audio.duration)) {
-      soundCloudAudio.audio.currentTime = xPos * soundCloudAudio.audio.duration
-    }
-    onSeekTrack && onSeekTrack.call(this, xPos, e)
-  }
+export const AudioSeekBar = () => {
+  const { duration, seek, percentComplete } = useAudioPosition({
+    highRefreshRate: true,
+  })
+  const { playing } = useAudioPlayer()
+  const [barWidth, setBarWidth] = useState("0%")
 
-  if (!value && currentTime && duration) {
-    value = (currentTime / duration) * 100 || 0
-  }
-  if (value < 0) {
-    value = 0
-  }
-  if (value > 100) {
-    value = 100
-  }
+  const seekBarElem = useRef(null)
+
+  useEffect(() => {
+    setBarWidth(`${percentComplete}%`)
+  }, [percentComplete])
+
+  const goTo = useCallback(
+    event => {
+      const { pageX: eventOffsetX } = event
+
+      if (seekBarElem.current) {
+        const elementOffsetX = seekBarElem.current.offsetLeft
+        const elementWidth = seekBarElem.current.clientWidth
+        const percent = (eventOffsetX - elementOffsetX) / elementWidth
+        seek(percent * duration)
+      }
+    },
+    [duration, playing, seek]
+  )
 
   return (
-    <div onClick={handleSeekTrack} className={styles.container}>
-      <div
-        style={{ width: `${value ? value : 0}%` }}
-        className={styles.progress}
-      ></div>
+    <div
+      className={`${styles.audioSeekBar} ${styles.playBar__seek} `}
+      ref={seekBarElem}
+      onClick={goTo}
+    >
+      <div style={{ width: barWidth }} className={styles.audioSeekBar__tick} />
     </div>
   )
 }
 
-export default Progress
+export default AudioSeekBar

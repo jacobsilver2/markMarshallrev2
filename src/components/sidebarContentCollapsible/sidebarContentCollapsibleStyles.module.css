@@ -10,7 +10,7 @@
 }
 
 .categoryTitle:hover {
-  color: var(--red);
+  color: var(--highlight);
   cursor: pointer;
 }
 
@@ -20,7 +20,7 @@
 
 .contentContainer {
   padding: 0.5em;
-  border: 1px solid white;
+  border: 1px solid var(--white);
   text-align: left;
   max-height: 200px;
   overflow: auto;

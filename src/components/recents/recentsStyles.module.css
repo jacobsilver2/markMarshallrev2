@@ -1,82 +1,88 @@
 .container {
-  /* border: 1px solid var(--offWhite); */
-  background: transparent;
-  border-radius: 8px;
   color: var(--offWhite);
-  padding: 1em;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-  justify-content: space-between;
+}
+
+.item:hover {
+  color: var(--highlight);
 }
 
 .items {
   display: grid;
-  grid-gap: 0.5em;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  /* align-self: flex-end; */
+  grid-template-columns: repeat(3, 125px);
+  grid-template-rows: repeat(3, 125px);
+  grid-gap: 10px;
 }
-
-.item {
-  border-radius: 4px;
-  border: 1px solid var(--offWhite);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.item:hover {
-  background: var(--red);
-  border: 1px solid var(--red);
-}
-
-/* .card {
-  background: white;
-  margin-bottom: 1em;
-  display: flex;
-  padding: 2em;
-} */
 
 .title {
-  color: var(--offWhite);
+  text-align: left;
+  font-size: 1.3rem;
+  color: var(--black);
+  font-family: "corso";
 }
 
 .clickedPlaylistContainer {
-  background: rgba(212, 212, 214, 0.05);
   position: relative;
-  border-radius: 8px;
-  color: black;
-  grid-row: span 3;
-  grid-column: span 3;
   display: grid;
-  grid-gap: 0.5em;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  grid-row: span 3;
+  grid-column: span 3;
+  grid-gap: 0.5em;
 }
 
-/* .clickedPlaylistSongList {
-} */
-
 .clickedPlaylistTitleBar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .clickedPlaylistTitle {
-  /* text-align: center; */
-  color: var(--offWhite);
+  text-transform: uppercase;
 }
 
 .clickedPlaylistClose {
   color: var(--offwhite);
-  /* justify-self: end; */
-  /* text-align: right; */
 }
 
-/* .inner {
-  width: 100%;
-  padding: 1em;
-} */
+.lightGreen {
+  background: var(--lightGreen);
+}
+
+.lightBlue {
+  background: var(--lightBlue);
+}
+
+.purple {
+  background: var(--purple);
+}
+
+.darkBlue {
+  background: var(--darkBlue);
+}
+
+.orange {
+  background: var(--orange);
+}
+
+.red {
+  background: var(--red);
+}
+
+.darkAvo {
+  background: var(--darkAvo);
+}
+
+.darkGrey {
+  background: var(--darkGrey);
+}
+
+.lightAvo {
+  background: var(--lightAvo);
+}
+
+.forestGreen {
+  background: var(--forestGreen);
+}
+
+.brown {
+  background: var(--brown);
+}

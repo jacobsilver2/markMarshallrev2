@@ -7,7 +7,7 @@ const Playlists = ({ playlists }) => {
     <PlaylistCard key={playlist.contentful_id} playlist={playlist} />
   ))
 
-  return <motion className={styles.container}>{playListCards}</motion>
+  return <div className={styles.container}>{playListCards}</div>
 }
 
 export default Playlists

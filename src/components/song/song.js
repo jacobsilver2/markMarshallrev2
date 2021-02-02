@@ -1,46 +1,57 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import Img from "gatsby-image"
-import { FaPlay, FaPause, FaBackward } from "react-icons/fa"
+import styled from "styled-components"
+import { FaPlay, FaPause } from "react-icons/fa"
+import { useAudioPlayer, useAudioPosition } from "react-use-audio-player"
 import styles from "./songStyles.module.css"
 import {
   GlobalStateContext,
   GlobalDispatchContext,
 } from "../../context/provider"
-import styled from "styled-components"
 
 const StyledImg = styled.img`
   position: relative;
   height: 100%;
   width: 100%;
-  clip-path: ${({ width, isCurrent }) =>
-    isCurrent ? `inset(0 0 0 ${width}% )` : ""};
 `
 
-const StyledOverlayImg = styled.img`
+const ProgressBar = styled.div`
+  background: var(--highlight);
+  opacity: 75%;
+  border-radius: 2px;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
-  clip-path: ${({ width }) => `inset(0 ${100 - width}% 0 0 )`};
-  filter: opacity(0.5) drop-shadow(0 0 0 var(--main-bg-color));
+  width: 5px;
+  bottom: 0;
+  left: ${props => props.position};
 `
 
 const Song = ({ song }) => {
+  const [barWidth, setBarWidth] = useState("0%")
+  const { playing, togglePlayPause } = useAudioPlayer()
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
-  // console.log(song)
+  const { percentComplete } = useAudioPosition({
+    highRefreshRate: true,
+  })
+  useEffect(() => {
+    setBarWidth(`${percentComplete}%`)
+  }, [percentComplete])
 
   function handlePlayPause() {
-    dispatch({
-      type: "SET_CURRENT_TRACK",
-      url: song.audio.file.url,
-      title: song.title,
-    })
-    dispatch({
-      type: "TOGGLE_PLAYING",
-    })
+    if (state.currentTrackUrl !== song.audio.file.url) {
+      dispatch({
+        type: "SET_CURRENT_TRACK",
+        url: song.audio.file.url,
+        title: song.title,
+      })
+    }
+    if (
+      state.currentTrackUrl &&
+      state.currentTrackUrl === song.audio.file.url
+    ) {
+      togglePlayPause()
+    }
   }
 
   return (
@@ -112,8 +123,7 @@ const Song = ({ song }) => {
             type="button"
             className={styles.button}
           >
-            {state.currentTrackUrl === song.audio.file.url &&
-            state.isPlaying ? (
+            {state.currentTrackUrl === song.audio.file.url && playing ? (
               <FaPause />
             ) : (
               <FaPlay />
@@ -121,22 +131,16 @@ const Song = ({ song }) => {
           </button>
           {song.waveformImage && (
             <div className={styles.waveformImage}>
-              {/* <Img
-                imgStyle={{ objectFit: "contain" }}
-                fluid={song.waveformImage.fluid}
-              /> */}
               <div className={styles.imageWrapper}>
                 <StyledImg
                   isCurrent={state.currentTrackUrl === song.audio.file.url}
-                  width={state.currentTime}
+                  width={barWidth}
                   src={song.waveformImage.fluid.src}
                 />
-                {state.currentTrackUrl === song.audio.file.url && (
-                  <StyledOverlayImg
-                    width={state.currentTime}
-                    src={song.waveformImage.fluid.src}
-                  />
-                )}
+                {state.currentTrackUrl &&
+                  state.currentTrackUrl === song.audio.file.url && (
+                    <ProgressBar position={barWidth} />
+                  )}
               </div>
             </div>
           )}

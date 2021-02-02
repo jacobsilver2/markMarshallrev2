@@ -1,19 +1,17 @@
 .link {
-  /* text-align: center; */
   padding: 0 0.5em;
   text-decoration: none;
-  color: white;
-  /* margin-right: 0.5em; */
+  color: var(--text);
 }
 
 .link:hover {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .dropdown {
   position: absolute;
-  background: var(--main-bg-color);
-  color: white;
+  background: var(--bg_1);
+  color: var(--text);
   right: 0;
   margin-top: 1em;
   padding: 1em;

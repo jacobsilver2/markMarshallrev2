@@ -6,7 +6,8 @@
   align-items: center;
   grid-template-rows: 1fr;
   padding: 0.5em 0;
-  color: white;
+  color: var(--text);
+  z-index: 999;
 }
 
 @media screen and (max-width: 1023px) {
@@ -74,7 +75,7 @@
 /* .navlinks ul::before {
   content: "";
   width: 2px;
-  background: white;
+  background: var(--white);
   height: 100%;
   left: 0;
   position: absolute;
@@ -84,7 +85,7 @@
 
 .navlinks ul::after {
   height: 2px;
-  background: white;
+  background: var(--white);
   content: "";
   width: 0;
   position: absolute;
@@ -97,7 +98,7 @@
 
 .navlinks ul:hover,
 :focus {
-  color: var(--red);
+  color: var(--highlight);
   outline: none;
 }
 

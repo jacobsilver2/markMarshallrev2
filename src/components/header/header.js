@@ -11,10 +11,11 @@ import useWindowSize from "../../hooks/useWindowSize"
 import styles from "./headerStyle.module.css"
 import Navlinks from "../navlinks/navlinks"
 import Img from "gatsby-image"
+import bg from "../../images/background.png"
 
 const Header = () => {
   const size = useWindowSize()
-  const { isLoggedIn, profile } = useAuth()
+  const { isLoggedIn } = useAuth()
   const state = useContext(GlobalStateContext)
   const dispatch = useContext(GlobalDispatchContext)
 
@@ -32,7 +33,13 @@ const Header = () => {
   `)
 
   return (
-    <header>
+    <header
+      style={{
+        backgroundImage: `url(${bg})`,
+        objectFit: "none",
+        backgroundSize: "200px",
+      }}
+    >
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link to="/">

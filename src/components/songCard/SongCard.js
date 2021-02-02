@@ -1,5 +1,6 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "gatsby"
+
 import {
   GlobalStateContext,
   GlobalDispatchContext,
@@ -9,6 +10,7 @@ import slugify from "../../lib/slugify"
 import styles from "./songCardStyle.module.css"
 import styled from "styled-components"
 import { FaPlay, FaPause } from "react-icons/fa"
+import { useAudioPlayer, useAudioPosition } from "react-use-audio-player"
 
 const listLength = 3
 
@@ -16,23 +18,30 @@ const StyledImg = styled.img`
   position: relative;
   height: 100%;
   width: 100%;
-  clip-path: ${({ width, isCurrent }) =>
-    isCurrent ? `inset(0 0 0 ${width}% )` : ""};
 `
 
-const StyledOverlayImg = styled.img`
+const ProgressBar = styled.div`
+  background: var(--highlight);
+  opacity: 75%;
+  border-radius: 2px;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
-  clip-path: ${({ width }) => `inset(0 ${100 - width}% 0 0 )`};
-  filter: opacity(0.5) drop-shadow(0 0 0 var(--main-bg-color));
+  width: 5px;
+  bottom: 0;
+  left: ${props => props.position};
 `
 
 const SongCard = ({ song }) => {
+  const [barWidth, setBarWidth] = useState("0%")
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
+  const { playing, togglePlayPause } = useAudioPlayer()
+  const { percentComplete } = useAudioPosition({
+    highRefreshRate: true,
+  })
+  useEffect(() => {
+    setBarWidth(`${percentComplete}%`)
+  }, [percentComplete])
   const {
     tempo,
     soundsLike,
@@ -64,19 +73,8 @@ const SongCard = ({ song }) => {
         title,
       })
     }
-    if (
-      state.currentTrackUrl &&
-      state.currentTrackUrl === audio.file.url &&
-      state.isPlaying
-    ) {
-      dispatch({ type: "SET_ISPLAYING_FALSE" })
-    }
-    if (
-      state.currentTrackUrl &&
-      state.currentTrackUrl === audio.file.url &&
-      !state.isPlaying
-    ) {
-      dispatch({ type: "SET_ISPLAYING_TRUE" })
+    if (state.currentTrackUrl && state.currentTrackUrl === audio.file.url) {
+      togglePlayPause()
     }
   }
   return (
@@ -140,7 +138,7 @@ const SongCard = ({ song }) => {
           >
             {state.currentTrackUrl &&
             state.currentTrackUrl === audio.file.url &&
-            state.isPlaying ? (
+            playing ? (
               <FaPause />
             ) : (
               <FaPlay />
@@ -154,15 +152,11 @@ const SongCard = ({ song }) => {
                     state.currentTrackUrl &&
                     state.currentTrackUrl === audio.file.url
                   }
-                  width={state.currentTime}
                   src={waveformImage.fluid.src}
                 />
                 {state.currentTrackUrl &&
                   state.currentTrackUrl === audio.file.url && (
-                    <StyledOverlayImg
-                      width={state.currentTime}
-                      src={waveformImage.fluid.src}
-                    />
+                    <ProgressBar position={barWidth} />
                   )}
               </div>
             )}

@@ -1,5 +1,6 @@
 .container {
   height: 100%;
+  padding: 1em;
 }
 
 .container li {
@@ -9,8 +10,6 @@
 
 .topbar {
   display: grid;
-  /* justify-items: center; */
-  /* grid-gap: 1rem; */
   grid-template-columns: auto auto auto;
   grid-template-areas: "sort paginator";
   padding-bottom: 1em;

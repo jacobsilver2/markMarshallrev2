@@ -4,7 +4,7 @@
 .card {
   height: 100%;
   width: 100%;
-  background: white;
+  background: var(--white);
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -23,12 +23,12 @@
 }
 
 .back:hover {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .title {
   font-size: 2em;
-  align-self: center;
+  align-self: left;
   padding-bottom: 1em;
 }
 
@@ -54,17 +54,16 @@
   display: flex;
   outline: none;
   width: 100%;
-  /* justify-content: center; */
   align-items: center;
   padding: 1em 0;
   outline: none;
 }
 
 .button {
-  color: white;
+  color: var(--text);
   padding: 1.5em;
   border-radius: 9999px;
-  background: var(--red);
+  background: var(--highlight);
   outline: none;
 }
 
@@ -73,12 +72,11 @@
 }
 
 .button:hover {
-  background: darkred;
+  background: var(--darkHighlight);
   outline: none;
 }
 
 .waveformImage {
   width: 100%;
-  /* height: 100%; */
   position: relative;
 }

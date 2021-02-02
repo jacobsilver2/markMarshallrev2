@@ -3,7 +3,7 @@
   grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
   grid-auto-rows: 1fr;
   grid-gap: 1em;
-  padding: 1em 0;
+  padding: 1em;
 }
 
 .container::before {

@@ -1,6 +1,4 @@
 import React, { useState, useContext } from "react"
-import slugify from "../../lib/slugify"
-import { Link } from "gatsby"
 import styles from "./playlistCardStyles.module.css"
 import BackgroundImage from "gatsby-background-image"
 import {
@@ -8,6 +6,14 @@ import {
   GlobalDispatchContext,
 } from "../../context/provider"
 import { motion } from "framer-motion"
+
+const playlistColors = [
+  styles.darkAvo,
+  styles.darkGrey,
+  styles.lightAvo,
+  styles.forestGreen,
+  styles.brown,
+]
 
 const PlaylistCard = ({ playlist }) => {
   const [flip, setFlip] = useState(false)
@@ -22,7 +28,6 @@ const PlaylistCard = ({ playlist }) => {
   const desc = descObj ? descObj.content[0].content[0].value : null
 
   function handleFlip() {
-    // setFlip(prev => !prev)
     dispatch({
       type: "SET_FLIPPED_PLAYLIST_CARD",
       id: playlist.contentful_id,
@@ -30,10 +35,12 @@ const PlaylistCard = ({ playlist }) => {
   }
 
   return (
-    <BackgroundImage
-      Tag="section"
-      fluid={playlist.image.fluid}
-      className={styles.container}
+    <div
+      // Tag="section"
+      // fluid={playlist.image.fluid}
+      className={`${styles.container} ${
+        playlistColors[Math.floor(Math.random() * playlistColors.length)]
+      }`}
     >
       <motion.div
         className={`${styles.flipCard} ${
@@ -55,16 +62,24 @@ const PlaylistCard = ({ playlist }) => {
               {playlist.songs &&
                 playlist.songs.map(song => (
                   <li key={song.id}>
-                    <Link to={`/music/${slugify(song.title)}`}>
+                    <button
+                      onClick={() =>
+                        dispatch({
+                          type: "SET_CURRENT_TRACK",
+                          url: song.audio.file.url,
+                          title: song.title,
+                        })
+                      }
+                    >
                       {song.title}
-                    </Link>
+                    </button>
                   </li>
                 ))}
             </ul>
           </div>
         </div>
       </motion.div>
-    </BackgroundImage>
+    </div>
   )
 }
 

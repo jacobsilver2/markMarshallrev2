@@ -1,25 +1,23 @@
 .container {
   padding: 2rem;
-  background-size: cover;
+  /* margin: 1rem; */
+  /* background-size: cover;
   background-position: center;
-  background-repeat: none;
-  color: white;
-  filter: grayscale(100%);
+  background-repeat: none; */
+  color: var(--text);
+  /* filter: grayscale(100%); */
 }
 
-.container:hover {
-  /* border: 1px solid var(--red); */
+/* .container:hover {
   filter: none;
-  /* transition: filter 2s; */
-}
+} */
 
 .flipCard {
   background-color: transparent;
   width: 100%;
   height: 100%;
-  /* border: 1px solid #f1f1f1; */
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  border-radius: 8px;
+  perspective: 1000px;
+  /* border-radius: 8px; */
 }
 
 .flipCard p {
@@ -28,7 +26,7 @@
 }
 
 .flipCardInner {
-  border-radius: 8px;
+  /* border-radius: 8px; */
   position: relative;
   height: 100%;
   width: 100%;
@@ -43,16 +41,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   height: 100%;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--black);
+  opacity: 95%;
   overflow: auto;
 }
 
 .title {
   position: absolute;
-  /* font-family: "corso"; */
   letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 1.5em;
@@ -62,9 +60,8 @@
 }
 
 .description {
-  color: var(--yellow);
+  /* color: var(--yellow); */
   max-height: 5em;
-  /* max-height: 5ch; */
 }
 
 .description p {
@@ -77,9 +74,9 @@
 
 .flipCardBack {
   padding: 2em;
-  border-radius: 8px;
-  background-color: black;
-  color: white;
+  /* border-radius: 8px; */
+  background-color: var(--black);
+  color: var(--text);
   transform: rotateY(180deg);
   overflow: auto;
 }
@@ -89,7 +86,7 @@
 }
 
 .flipCardBack li:hover {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .flipCardFront,
@@ -99,4 +96,24 @@
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+}
+
+.darkAvo {
+  background: var(--darkAvo);
+}
+
+.darkGrey {
+  background: var(--darkGrey);
+}
+
+.lightAvo {
+  background: var(--lightAvo);
+}
+
+.forestGreen {
+  background: var(--forestGreen);
+}
+
+.brown {
+  background: var(--brown);
 }
