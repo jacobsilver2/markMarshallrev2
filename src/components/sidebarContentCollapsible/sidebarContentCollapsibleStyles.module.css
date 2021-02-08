@@ -1,11 +1,18 @@
+.listItem {
+  margin-left: 1em;
+}
+
 .container {
   cursor: pointer;
-  padding: 0.5em 0;
+  /* padding: 0.5em 0; */
+  border-bottom: 3px solid black;
+  box-sizing: border-box;
 }
 
 .categoryTitle {
+  font-size: 1.5em;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -15,12 +22,13 @@
 }
 
 .caret {
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .contentContainer {
-  padding: 0.5em;
-  border: 1px solid var(--white);
+  /* padding: 0.5em; */
+  margin-right: 1em;
+  border: 1px solid var(--black);
   text-align: left;
   max-height: 200px;
   overflow: auto;
@@ -29,6 +37,11 @@
 .contentContainer ul {
   list-style-type: none;
   font-size: small;
+  font-family: var(--font1);
+}
+
+.contentContainer ul ::-webkit-scrollbar {
+  background-color: var(--yellow);
 }
 
 .contentCategory {

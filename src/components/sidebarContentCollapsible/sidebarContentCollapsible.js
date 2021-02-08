@@ -33,32 +33,34 @@ const SidebarContentCollapsible = ({
   )
 
   return (
-    <Collapsible
-      transitionTime={200}
-      className={styles.container}
-      trigger={catWithCaret}
-      onOpen={() => setIsOpen(true)}
-      onClose={() => setIsOpen(false)}
-    >
-      <div className={styles.contentContainer}>
-        <ul>
-          {values.map(value => (
-            <li key={value}>
-              <label htmlFor={value}></label>
-              <input
-                id={value}
-                onChange={handleCheck}
-                type="checkbox"
-                name={value}
-                value={value}
-                checked={queryArr && queryArr.includes(value)}
-              />
-              <p className={styles.contentCategory}>{value}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Collapsible>
+    <li className={styles.listItem}>
+      <Collapsible
+        transitionTime={200}
+        className={styles.container}
+        trigger={catWithCaret}
+        onOpen={() => setIsOpen(true)}
+        onClose={() => setIsOpen(false)}
+      >
+        <div className={styles.contentContainer}>
+          <ul>
+            {values.map(value => (
+              <li key={value}>
+                <label htmlFor={value}></label>
+                <input
+                  id={value}
+                  onChange={handleCheck}
+                  type="checkbox"
+                  name={value}
+                  value={value}
+                  checked={queryArr && queryArr.includes(value)}
+                />
+                <p className={styles.contentCategory}>{value}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Collapsible>
+    </li>
   )
 }
 

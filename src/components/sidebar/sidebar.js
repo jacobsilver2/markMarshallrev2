@@ -79,7 +79,7 @@ const Sidebar = () => {
     </button>
   )
 
-  const desktopTitle = <h1>FILTER</h1>
+  const desktopTitle = ""
 
   const filters = (
     <>
@@ -88,44 +88,58 @@ const Sidebar = () => {
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
-            category="Genre"
+            category="GENRE"
             values={genresArr}
           />
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
-            category="Composer"
+            category="COMPOSER"
             values={composersArr}
           />
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
-            category="Tempo"
+            category="TEMPO"
             values={temposArr}
           />
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
-            category="Sounds Like"
+            category="SOUNDS LIKE"
             values={soundsLikeArr}
           />
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
-            category="Instrumentation"
+            category="INSTRUMENTATION"
             values={instrumentationArr}
           />
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
-            category="Mood"
+            category="MOOD"
             values={moodArr}
           />
         </ul>
+        <div className={styles.buttonContainer}>
+          <button onClick={handleSearch} className={styles.buttons} type="text">
+            Search
+          </button>
+        </div>
       </div>
 
       <div className={styles.filterlist}>
-        <p>Selected Filters:</p>
+        <h2>SELECTED FILTERS</h2>
+        <div className={styles.clearButtonContainer}>
+          <button
+            onClick={() => setQueryArr([])}
+            className={styles.clearButton}
+            type="text"
+          >
+            X CLEAR FILTERS
+          </button>
+        </div>
         <div>
           <ul className={styles.selectedFilters}>
             {queryArr.length ? (
@@ -138,21 +152,9 @@ const Sidebar = () => {
                 ))}
               </>
             ) : (
-              <li>---</li>
+              ""
             )}
           </ul>
-        </div>
-        <div className={styles.buttonContainer}>
-          <button onClick={handleSearch} className={styles.buttons} type="text">
-            Search
-          </button>
-          <button
-            onClick={() => setQueryArr([])}
-            className={styles.buttons}
-            type="text"
-          >
-            Clear Filters
-          </button>
         </div>
       </div>
     </>
@@ -160,15 +162,17 @@ const Sidebar = () => {
 
   return (
     <nav
-      style={{
-        backgroundImage: `url(${bg})`,
-        objectFit: "none",
-        backgroundSize: "200px",
-      }}
+      style={
+        {
+          // backgroundImage: `url(${bg})`,
+          // objectFit: "none",
+          // backgroundSize: "200px",
+        }
+      }
       className={styles.container}
     >
       <div className={styles.filtersTitle}>
-        {size.width < 1024 ? mobileTitleButton : desktopTitle}
+        {size.width < 1024 ? mobileTitleButton : ""}
       </div>
       {dropdown ? (
         <>{size.width < 1024 ? <SlideDown>{filters}</SlideDown> : filters}</>
