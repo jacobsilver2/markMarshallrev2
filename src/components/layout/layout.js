@@ -5,7 +5,6 @@ import Sidebar from "../sidebar/sidebar"
 import Footer from "../footer/footer"
 import Modal from "../modal/modal"
 
-import bg from "../../images/background.png"
 import style from "./layoutStyle.module.css"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 

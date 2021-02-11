@@ -1,17 +1,12 @@
 import React, { useContext } from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import { AuthService, useAuth } from "gatsby-theme-auth0"
 import ReactModal from "react-modal"
-import {
-  GlobalStateContext,
-  GlobalDispatchContext,
-} from "../../context/provider"
-import styles from "./modalStyle.module.css"
-import navLinksArr from "../../lib/navLinksArr"
 import bg from "../../images/background.png"
+import { GlobalStateContext } from "../../context/provider"
+import NavModal from "../navModal/navModal"
+import Filters from "../filters/filters"
+import { useDisableBodyScroll } from "../../hooks/useDisableBodyScroll"
 
-const customStyles = {
+const navModalStyles = {
   content: {
     position: "absolute",
     top: "10%",
@@ -40,71 +35,53 @@ const customStyles = {
   },
 }
 
-const Modal = () => {
-  const { isLoggedIn } = useAuth()
-  const mappedNavLinks = navLinksArr.map(navLink => (
-    <li className={styles.link} key={navLink.name}>
-      <Link
-        onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
-        to={navLink.route}
-      >
-        {navLink.name}
-      </Link>
-    </li>
-  ))
-  const state = useContext(GlobalStateContext)
-  const dispatch = useContext(GlobalDispatchContext)
+const filtersModalStyles = {
+  content: {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    border: "1px solid #ccc",
+    backgroundColor: "#ecc938",
+    overflow: "auto",
+    WebkitOverflowScrolling: "touch",
+    borderRadius: "4px",
+    outline: "none",
+    padding: 0,
+    // padding: "20px",
+  },
+  overlay: {
+    zIndex: 1000,
+    position: "fixed",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    margin: 0,
+    padding: 0,
+    // backgroundColor: "rgba(28,41,56,0.90)",
+  },
+}
 
-  const data = useStaticQuery(graphql`
-    query modalImgQuery {
-      file(name: { eq: "logo" }) {
-        id
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+const Modal = () => {
+  const state = useContext(GlobalStateContext)
+  useDisableBodyScroll(state.modalOpen)
+
+  let style
+
+  if (state.modalChild === "nav") {
+    style = navModalStyles
+  }
+
+  if (state.modalChild === "filters") {
+    style = filtersModalStyles
+  }
 
   return (
-    <ReactModal style={customStyles} isOpen={state.modalOpen}>
-      <div className={styles.container}>
-        <button
-          className={styles.close}
-          onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
-        >
-          CLOSE
-        </button>
-        <ul className={styles.list}>
-          <li className={`${styles.link} ${styles.logo}`}>
-            <Link onClick={() => dispatch({ type: "TOGGLE_MODAL" })} to="/">
-              <div style={{ width: "75px" }}>
-                <Img fluid={data.file.childImageSharp.fluid} />
-              </div>
-            </Link>
-          </li>
-          {mappedNavLinks}
-          {isLoggedIn ? (
-            <>
-              <li className={styles.link}>
-                <Link
-                  onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
-                  to="/waveformGenerator"
-                >
-                  Waveform
-                </Link>
-              </li>
-              <li className={styles.link}>
-                <button onClick={AuthService.logout}>Log Out</button>
-              </li>
-            </>
-          ) : (
-            ""
-          )}
-        </ul>
-      </div>
+    <ReactModal style={style} isOpen={state.modalOpen}>
+      {state.modalChild === "nav" && <NavModal />}
+      {state.modalChild === "filters" && <Filters />}
     </ReactModal>
   )
 }

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import styles from "./recentsStyles.module.css"
 import { GlobalDispatchContext } from "../../context/provider"
 import styled from "styled-components"
+import { motion, AnimatePresence } from "framer-motion"
 
 const songColors = [
   styles.lightGreen,
@@ -20,19 +21,12 @@ const playlistColors = [
   styles.brown,
 ]
 
-// using styled components for this task, so hovering over the container will
-// only blur the background  and not the text
+//! using styled components for this task, so hovering over the container will
+//! only blur the background  and not the text
 const StyledItem = styled.div`
   position: relative;
   display: flex;
   font-size: 0.75em;
-  /* &:before {
-    content: "";
-    width: 0;
-    padding-bottom: 100%;
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
-  } */
 `
 
 const StyledBackground = styled.div`
@@ -121,7 +115,6 @@ const Recents = ({ model, items }) => {
             <h1 className={styles.clickedPlaylistTitle}>
               {clickedPlaylist.title}
             </h1>
-            {/* <div></div> */}
             <button
               className={styles.clickedPlaylistClose}
               onClick={() => setPlaylistClickedToggle()}
@@ -143,6 +136,31 @@ const Recents = ({ model, items }) => {
 
 export default Recents
 
+const PlaylistItem = styled(motion.div)`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 0.75em;
+`
+
+const PlaylistBackground = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  ${PlaylistButton}:hover & {
+    filter: blur(4px);
+  }
+`
+
+const PlaylistButton = styled.button`
+  position: relative;
+  /* align-self: center; */
+  /* text-align: left; */
+`
+
 const RecentClickedPlaylist = ({ playlist, color }) => {
   const dispatch = useContext(GlobalDispatchContext)
   function handlePlayPause(url, title) {
@@ -152,17 +170,44 @@ const RecentClickedPlaylist = ({ playlist, color }) => {
       title,
     })
   }
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  }
+
   return (
-    <div className={`${styles.clickedPlaylistContainer} ${color}`}>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className={`${styles.clickedPlaylistContainer}`}
+    >
       {playlist.songs.map(song => (
-        <button
-          key={song.contentful_id}
-          className={styles.item}
-          onClick={() => handlePlayPause(song.audio.file.url, song.title)}
-        >
-          <h1>{song.title}</h1>
-        </button>
+        <PlaylistItem variants={item} key={song.contentful_id}>
+          <PlaylistBackground
+            className={color}
+            onClick={() => handlePlayPause(song.audio.file.url, song.title)}
+          >
+            <PlaylistButton
+              className={styles.item}
+              onClick={() => handlePlayPause(song.audio.file.url, song.title)}
+            >
+              <h1>{song.title}</h1>
+            </PlaylistButton>
+          </PlaylistBackground>
+        </PlaylistItem>
       ))}
-    </div>
+    </motion.div>
   )
 }

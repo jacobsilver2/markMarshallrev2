@@ -32,6 +32,11 @@ const Header = () => {
     }
   `)
 
+  function handleBurgerToggle() {
+    dispatch({ type: "SET_MODAL_CHILD", modalChild: "nav" })
+    dispatch({ type: "TOGGLE_MODAL" })
+  }
+
   return (
     <header
       style={{
@@ -58,8 +63,8 @@ const Header = () => {
             ) : (
               <li className={styles.burger}>
                 <Hamburger
-                  toggled={state.modalOpen}
-                  toggle={() => dispatch({ type: "TOGGLE_MODAL" })}
+                  toggled={state.modalOpen && state.modalChild === "nav"}
+                  toggle={handleBurgerToggle}
                 />
               </li>
             )}

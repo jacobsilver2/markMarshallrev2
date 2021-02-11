@@ -9,6 +9,7 @@ const initialState = {
   currentTime: 0,
   isPlaying: false,
   modalOpen: false,
+  modalChild: "",
   flippedPlaylistCard: null,
 }
 
@@ -49,6 +50,12 @@ function reducer(state, action) {
       return {
         ...state,
         modalOpen: !state.modalOpen,
+      }
+    }
+    case "SET_MODAL_CHILD": {
+      return {
+        ...state,
+        modalChild: action.modalChild,
       }
     }
     case "SET_FLIPPED_PLAYLIST_CARD": {

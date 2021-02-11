@@ -1,0 +1,107 @@
+.filters {
+  width: 100%;
+  padding: 0;
+  padding: 8em 0;
+}
+
+.filterlist {
+  text-align: center;
+  width: 100%;
+}
+
+.filterlist h2 {
+  font-family: var(--font2);
+  text-align: left;
+  font-size: 1.5em;
+  border-bottom: 3px solid black;
+}
+
+.filterCategories {
+  font-family: var(--font2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+.selectedFilters {
+  text-align: center;
+  font-size: 0.75em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selectedFilters button {
+  color: var(--textDark);
+}
+
+.close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.close button {
+  font-size: var(--largeish);
+  font-family: var(--font2);
+  color: var(--textDark);
+}
+
+.buttonContainer {
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+}
+
+.buttons {
+  width: 100%;
+  color: var(--textDark);
+  border: 1px solid var(--black);
+  border-radius: 4px;
+}
+
+.buttons:hover {
+  background: var(--highlight);
+  color: var(--text);
+  border: 1px solid var(--highlight);
+}
+
+.clearButtonContainer {
+  text-align: left;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.25em;
+}
+
+.clearButton {
+  color: var(--textDark);
+  font-size: 0.75em;
+}
+
+.filterCategories {
+  flex-wrap: nowrap;
+  flex-direction: column;
+  font-size: large;
+  min-width: 12em;
+}
+
+.filterlist {
+  padding-left: 1em;
+}
+
+.selectedFilters {
+  flex-direction: column;
+  text-align: left;
+  /* padding-top: em; */
+}
+.buttonContainer {
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  grid-gap: 1em;
+}
+@media screen and (max-width: 1023px) {
+  .filters {
+    padding: 4em 0;
+  }
+}

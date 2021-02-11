@@ -15,7 +15,7 @@
 
 .title {
   text-align: left;
-  font-size: 1.3rem;
+  font-size: var(--largeish);
   color: var(--black);
   font-family: "corso";
 }
@@ -41,6 +41,13 @@
 
 .clickedPlaylistClose {
   color: var(--offwhite);
+}
+
+@media screen and (max-width: 1023px) {
+  .items {
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+  }
 }
 
 .lightGreen {

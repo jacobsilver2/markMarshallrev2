@@ -3,7 +3,6 @@
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100%;
-  /* grid-gap: 6em; */
 }
 
 .title {
@@ -14,38 +13,38 @@
 .title h1 {
   font-family: "corso";
   color: var(--yellow);
-  font-size: 8vw;
+  /* font-size: 8vw; */
+  font-size: var(--banner);
   line-height: 1;
 }
 
-.title h2 {
+/* .title h2 {
   color: var(--black);
   font-size: 1vw;
   text-transform: uppercase;
-}
+} */
 
 .title h3 {
   color: var(--black);
+  font-size: var(--largeish);
   font-family: "corso";
   text-transform: uppercase;
-  font-size: 2vw;
 }
 
 .recents {
   display: grid;
   padding: 1rem;
   background: var(--beige);
-  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(375px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   grid-gap: 2rem;
   align-items: center;
   justify-items: center;
-  /* grid-gap: 5rem; */
-  /* align-content: center; */
 }
 
 @media screen and (max-width: 1023px) {
   .title h1 {
-    font-size: 20vw;
+    font-size: var(--bannerMobile);
   }
 
   .title h2 {
