@@ -6,6 +6,7 @@
   --purple: #9932cc;
   --highlight: var(--red);
   --darkHighlight: darkred;
+  --highlightDark: var(--black);
   --offWhite: rgb(212, 212, 214);
   --white: white;
   --text: white;
@@ -24,10 +25,14 @@
   --brown: #897209;
   --font1: "distopia";
   --font2: "corso";
-  --banner: 12vw;
-  --bannerMobile: 20vw;
+  --bannerHuge: 12rem;
+  --banner: 8rem;
+  --bannerMobile: 6rem;
+  --byline: 2.5rem;
+  --bylineMobile: 2rem;
   --largeish: 1.5rem;
   --normal: 1rem;
+  --smallish: 0.75rem;
   --small: 0.5rem;
   scrollbar-color: var(--highlight) var(--black);
   scrollbar-width: 8px;

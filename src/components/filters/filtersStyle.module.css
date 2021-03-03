@@ -63,9 +63,9 @@
 }
 
 .buttons:hover {
-  background: var(--highlight);
+  background: var(--highlightDark);
   color: var(--text);
-  border: 1px solid var(--highlight);
+  border: 1px solid var(--highlightDark);
 }
 
 .clearButtonContainer {

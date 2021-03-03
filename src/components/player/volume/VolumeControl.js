@@ -24,14 +24,14 @@ const VolumeControl = () => {
   return (
     <div className={volumeStyles.volume}>
       <button
-        className={`${volumeStyles.soundplayerButton} ${volumeStyles.volumeRange}`}
+        className={`${volumeStyles.soundplayerButton}`}
         onClick={() => setMuted(prev => !prev)}
       >
         {muted ? <FaVolumeMute /> : <FaVolumeUp />}
       </button>
       <div className={volumeStyles.inputContainer}>
         <input
-          className={volumeStyles.volumeControl__icon}
+          className={volumeStyles.slider}
           type="range"
           min={0}
           max={100}

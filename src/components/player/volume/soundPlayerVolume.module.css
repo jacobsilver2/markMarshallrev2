@@ -15,72 +15,47 @@
   transition: width 0.2s ease-out;
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.volumeRange {
-  background: transparent;
+
+.slider {
   -webkit-appearance: none;
-  /* max-height: 150px; */
+  appearance: none;
   width: 100%;
-  display: flex;
-}
-.volumeRange:focus {
+  height: 0.2em;
+  cursor: pointer;
+  background: var(--white);
+  border-radius: 1.3px;
   outline: none;
 }
-/* track */
-.volumeControl__icon::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 0.2em;
-  cursor: pointer;
-  animate: 0.2s;
-  background: var(--white);
-  border-radius: 1.3px;
-}
-.volumeRange::-moz-range-track {
-  width: 100%;
-  height: 0.2em;
-  cursor: pointer;
-  animate: 0.2s;
-  background: var(--white);
-  border-radius: 1.3px;
-}
-.volumeRange::-ms-track {
-  width: 100%;
-  height: 0.2em;
-  cursor: pointer;
-  animate: 0.2s;
-  background: var(--white);
-  border-radius: 1.3px;
-}
-/* thumb dial */
-.volumeRange::-moz-range-thumb {
+
+.slider::-moz-range-thumb {
   height: 1em;
   width: 1em;
   border-radius: 1em;
   background: var(--highlight);
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -0.4em;
 }
-.volumeRange::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
   height: 1em;
   width: 1em;
   border-radius: 1em;
   background: var(--highlight);
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -0.4em;
+  appearance: none;
 }
-.volumeRange::-ms-thumb {
+.slider::-ms-thumb {
   height: 1em;
   width: 1em;
   border-radius: 1em;
   background: var(--highlight);
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -0.4em;
 }
-/* progress fill */
-.volumeRange::-ms-fill-lower {
+.slider::-ms-fill-lower {
   background: var(--highlight);
 }
 
@@ -96,22 +71,6 @@
   transition: transform, box-shadow, 0.05s ease;
 }
 .soundplayerButton:hover {
-  transform: scale(1.0625);
-  color: var(--highlight);
-}
-.soundplayerButton:focus {
-  transform: scale(0.9375);
-}
-.soundplayerButton:active {
-  box-shadow: inset 0 0 0 2px var(--highlight);
-}
-.soundplayerButton:hover,
-.soundplayerButton:focus {
-  box-shadow: none;
-}
-
-.volumeControl__icon {
-  width: 100%;
   color: var(--highlight);
 }
 

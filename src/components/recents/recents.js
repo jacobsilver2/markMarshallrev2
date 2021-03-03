@@ -34,15 +34,20 @@ const StyledBackground = styled.div`
   width: 100%;
   height: 100%;
   ${StyledItem}:hover & {
-    filter: blur(4px);
+    filter: blur(8px);
   }
 `
 
 const StyledButton = styled.button`
+  font-size: var(--normal);
   position: relative;
   align-self: flex-start;
   text-align: left;
   padding: 0.5em;
+  @media (max-width: 1090px) {
+    font-size: var(--smallish);
+    padding: 1em;
+  }
 `
 
 const Recents = ({ model, items }) => {
@@ -150,13 +155,14 @@ const PlaylistBackground = styled.div`
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  ${PlaylistButton}:hover & {
-    filter: blur(4px);
+  ${PlaylistItem}:hover & {
+    filter: blur(8px);
   }
 `
 
 const PlaylistButton = styled.button`
   position: relative;
+  padding: 0.5em;
   /* align-self: center; */
   /* text-align: left; */
 `
@@ -198,14 +204,13 @@ const RecentClickedPlaylist = ({ playlist, color }) => {
           <PlaylistBackground
             className={color}
             onClick={() => handlePlayPause(song.audio.file.url, song.title)}
+          />
+          <PlaylistButton
+            className={styles.item}
+            onClick={() => handlePlayPause(song.audio.file.url, song.title)}
           >
-            <PlaylistButton
-              className={styles.item}
-              onClick={() => handlePlayPause(song.audio.file.url, song.title)}
-            >
-              <h1>{song.title}</h1>
-            </PlaylistButton>
-          </PlaylistBackground>
+            <h1>{song.title}</h1>
+          </PlaylistButton>
         </PlaylistItem>
       ))}
     </motion.div>

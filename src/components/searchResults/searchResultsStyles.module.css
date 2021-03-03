@@ -1,3 +1,6 @@
+.container {
+  padding: 1em;
+}
 .container p,
 button {
   color: var(--text);

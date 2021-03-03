@@ -12,9 +12,10 @@ const Player = () => {
   const state = useContext(GlobalStateContext)
 
   const { togglePlayPause, loading, playing } = useAudioPlayer({
-    src: state.currentTrackUrl,
-    format: "mp3",
     autoplay: true,
+    src: state.currentTrackUrl,
+    html5: true,
+    format: ["mp3"],
   })
 
   return (

@@ -52,6 +52,12 @@ function reducer(state, action) {
         modalOpen: !state.modalOpen,
       }
     }
+    case "MODAL_OFF": {
+      return {
+        ...state,
+        modalOpen: false,
+      }
+    }
     case "SET_MODAL_CHILD": {
       return {
         ...state,

@@ -2,10 +2,6 @@
   color: var(--offWhite);
 }
 
-.item:hover {
-  color: var(--highlight);
-}
-
 .items {
   display: grid;
   grid-template-columns: repeat(3, 125px);
@@ -17,7 +13,7 @@
   text-align: left;
   font-size: var(--largeish);
   color: var(--black);
-  font-family: "corso";
+  font-family: var(--font2);
 }
 
 .clickedPlaylistContainer {
@@ -43,7 +39,35 @@
   color: var(--offwhite);
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (min-width: 1800px) {
+  .items {
+    grid-template-columns: repeat(3, 225px);
+    grid-template-rows: repeat(3, 225px);
+  }
+}
+
+@media screen and (max-width: 1799px) and (min-width: 1525px) {
+  .items {
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+  }
+}
+
+@media screen and (max-width: 1524px) and (min-width: 1226px) {
+  .items {
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+  }
+}
+
+@media screen and (max-width: 1225px) and (min-width: 1091px) {
+  .items {
+    grid-template-columns: repeat(3, 125px);
+    grid-template-rows: repeat(3, 125px);
+  }
+}
+
+@media screen and (max-width: 1090px) {
   .items {
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);

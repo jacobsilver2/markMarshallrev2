@@ -34,12 +34,18 @@
 .recents {
   display: grid;
   padding: 1rem;
-  background: var(--beige);
+  background: var(--white);
   /* grid-template-columns: repeat(auto-fit, minmax(375px, 1fr)); */
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   grid-gap: 2rem;
   align-items: center;
   justify-items: center;
+}
+
+@media screen and (min-width: 1800px) {
+  .title h1 {
+    font-size: var(--bannerHuge);
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -52,6 +58,6 @@
   }
 
   .title h3 {
-    font-size: 6vw;
+    /* font-size: var(--bylineMobile); */
   }
 }

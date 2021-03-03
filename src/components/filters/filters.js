@@ -59,7 +59,7 @@ const Filters = () => {
 
   function handleSearch() {
     if (queryArr.length > 0) {
-      dispatch({ type: "TOGGLE_MODAL" })
+      dispatch({ type: "MODAL_OFF" })
       navigate(`/searchresults?query=${queryArr.join()}`, {
         state: { query: queryArr.join() },
       })
@@ -77,6 +77,7 @@ const Filters = () => {
     <div className={styles.filterContainer}>
       {state.modalOpen && (
         <div className={styles.close}>
+          {" "}
           <button onClick={handleClose}>CLOSE</button>
         </div>
       )}
