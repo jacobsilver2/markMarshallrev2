@@ -6,7 +6,7 @@
 }
 
 .title {
-  background: var(--white);
+  /* background: var(--white); */
   padding: 1.5rem;
 }
 
@@ -25,7 +25,7 @@
 } */
 
 .title h3 {
-  color: var(--black);
+  color: var(--offWhite);
   font-size: var(--largeish);
   font-family: "corso";
   text-transform: uppercase;
@@ -34,12 +34,14 @@
 .recents {
   display: grid;
   padding: 1rem;
-  background: var(--white);
+  /* background: var(--white); */
   /* grid-template-columns: repeat(auto-fit, minmax(375px, 1fr)); */
-  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 2rem;
   align-items: center;
   justify-items: center;
+  margin: auto 0;
+  /* border: 2px solid white; */
 }
 
 @media screen and (min-width: 1800px) {

@@ -3,16 +3,80 @@
 }
 
 .items {
+  height: 400px;
   display: grid;
-  grid-template-columns: repeat(3, 125px);
-  grid-template-rows: repeat(3, 125px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: 10px;
+}
+
+.recentSongsContainer {
+  width: 100%;
+  height: 100%;
+  font-size: 0.6rem;
+  text-align: left;
+}
+
+.category {
+  font-weight: bolder;
+}
+
+.songsContainer {
+  color: var(--offWhite);
+  border: 1px solid var(--offWhite);
+  height: 400px;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  justify-items: start;
+  grid-gap: 10px;
+}
+
+.recentSongColumnTitle {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--offWhite);
+  align-items: center;
+}
+
+.playlistBackground {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.buttonAndTitle {
+  display: flex;
+}
+
+.buttonContainer {
+  margin-top: 2px;
+  padding-right: 10px;
+}
+
+.recentSongRow {
+  cursor: pointer;
+  width: 100%;
+  display: grid;
+  /* grid-template-columns: repeat (5, 1fr); */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid lightgrey;
+  align-items: end;
+}
+
+.recentSongRow:hover {
+  color: var(--red);
 }
 
 .title {
   text-align: left;
   font-size: var(--largeish);
-  color: var(--black);
+  color: var(--offWhite);
   font-family: var(--font2);
 }
 
@@ -37,41 +101,6 @@
 
 .clickedPlaylistClose {
   color: var(--offwhite);
-}
-
-@media screen and (min-width: 1800px) {
-  .items {
-    grid-template-columns: repeat(3, 225px);
-    grid-template-rows: repeat(3, 225px);
-  }
-}
-
-@media screen and (max-width: 1799px) and (min-width: 1525px) {
-  .items {
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
-  }
-}
-
-@media screen and (max-width: 1524px) and (min-width: 1226px) {
-  .items {
-    grid-template-columns: repeat(3, 150px);
-    grid-template-rows: repeat(3, 150px);
-  }
-}
-
-@media screen and (max-width: 1225px) and (min-width: 1091px) {
-  .items {
-    grid-template-columns: repeat(3, 125px);
-    grid-template-rows: repeat(3, 125px);
-  }
-}
-
-@media screen and (max-width: 1090px) {
-  .items {
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-  }
 }
 
 .lightGreen {
@@ -102,7 +131,7 @@
   background: var(--darkAvo);
 }
 
-.darkGrey {
+.darkgrey {
   background: var(--darkGrey);
 }
 
