@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link } from "gatsby"
-
+import { useAudioPlayer, useAudioPosition } from "react-use-audio-player"
+import styled from "styled-components"
 import {
   GlobalStateContext,
   GlobalDispatchContext,
@@ -8,9 +9,8 @@ import {
 import tempoCalc from "../../lib/tempoCalc"
 import slugify from "../../lib/slugify"
 import styles from "./songCardStyle.module.css"
-import styled from "styled-components"
+import bg from "../../images/background.png"
 import { FaPlay, FaPause } from "react-icons/fa"
-import { useAudioPlayer, useAudioPosition } from "react-use-audio-player"
 
 const listLength = 3
 
@@ -85,7 +85,7 @@ const SongCard = ({ song }) => {
             <Link to={`/music/${slugify(title)}`}>{title}</Link>
           </h3>
           <ul className={styles.subtitleWrapper}>
-            {composer && (
+            {/* {composer && (
               <li className={styles.subtitle}>
                 <b>
                   Composer
@@ -96,7 +96,7 @@ const SongCard = ({ song }) => {
                 </b>{" "}
                 {composer && composer.join(", ")}
               </li>
-            )}
+            )} */}
             {genre && (
               <li className={styles.subtitle}>
                 <b>

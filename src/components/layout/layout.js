@@ -4,7 +4,7 @@ import Header from "../header/header"
 import Sidebar from "../sidebar/sidebar"
 import Footer from "../footer/footer"
 import Modal from "../modal/modal"
-
+import bg from "../../images/background.png"
 import style from "./layoutStyle.module.css"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
@@ -15,7 +15,11 @@ const Layout = ({ children }) => {
       <Modal />
       <Header />
       <Sidebar />
-      <main>{children}</main>
+      <main       style={{
+        backgroundImage: `url(${bg})`,
+        objectFit: "none",
+        backgroundSize: "200px",
+      }}>{children}</main>
       <Footer />
     </div>
   )

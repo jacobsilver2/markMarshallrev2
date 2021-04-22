@@ -10,13 +10,6 @@ import { FaPlay, FaPause } from "react-icons/fa"
 import renderList from "../../lib/renderList"
 import tempoCalc from "../../lib/tempoCalc"
 
-// const playlistColors = [
-//   styles.darkAvo,
-//   styles.darkGrey,
-//   styles.lightAvo,
-//   styles.forestGreen,
-//   styles.brown,
-// ]
 
 //! using styled components for this task, so hovering over the container will
 //! only blur the background  and not the text
@@ -56,7 +49,6 @@ const Recents = ({ model, items }) => {
   const state = useContext(GlobalStateContext)
   const [playlistClickedToggle, setPlaylistClickedToggle] = useState(false)
   const [clickedPlaylist, setClickedPlaylist] = useState({})
-
   function handlePlayPause(url, title) {
     dispatch({
       type: "SET_CURRENT_TRACK",
@@ -66,8 +58,8 @@ const Recents = ({ model, items }) => {
   }
 
   function handlePlaylistClick(item) {
+    setPlaylistClickedToggle(!playlistClickedToggle)
     setClickedPlaylist(item)
-    setPlaylistClickedToggle(prev => !prev)
   }
 
   function renderSongsDataGrid(stuff) {
@@ -112,21 +104,15 @@ const Recents = ({ model, items }) => {
   }
 
   function renderPlaylistTiles(stuff) {
-    // const randomColor =
-    //   playlistColors[Math.floor(Math.random() * playlistColors.length)]
-    // console.log(randomColor)
     if (model === "playlists") {
       return stuff.map(item => (
         <BackgroundImage
+          key={item.contentful_id}
           onClick={() => handlePlaylistClick(item)}
           fluid={item.image.fluid}
           className={styles.playlistBackground}
         >
-          <StyledItem key={item.contentful_id}>
-            {/* <StyledBackground
-            onClick={() => handlePlaylistClick(item)}
-            className={styles.forestGreen}
-          /> */}
+          <StyledItem >
             <StyledButton onClick={() => handlePlaylistClick(item)}>
               <h1>{item.title}</h1>
             </StyledButton>

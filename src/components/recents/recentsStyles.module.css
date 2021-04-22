@@ -3,7 +3,7 @@
 }
 
 .items {
-  height: 400px;
+  max-height: 400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -24,7 +24,7 @@
 .songsContainer {
   color: var(--offWhite);
   border: 1px solid var(--offWhite);
-  height: 400px;
+  max-height: 400px;
   padding: 1em;
   display: grid;
   grid-template-columns: 1fr;

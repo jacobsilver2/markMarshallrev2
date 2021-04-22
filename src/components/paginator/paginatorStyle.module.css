@@ -13,7 +13,7 @@
 }
 
 .active {
-  color: var(--black);
+  color: var(--offWhite);
   padding: 0.5em;
 }
 

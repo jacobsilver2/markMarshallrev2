@@ -4,7 +4,9 @@
 .card {
   height: 100%;
   width: 100%;
-  background: var(--white);
+  /* background: var(--white); */
+  /* border: 1px solid var(--white); */
+  color: var(--offWhite);
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -16,6 +18,7 @@
 }
 
 .back {
+  padding-left: 1em; 
   display: flex;
   justify-content: center;
   align-items: center;

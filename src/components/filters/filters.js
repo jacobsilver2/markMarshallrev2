@@ -42,7 +42,7 @@ const Filters = () => {
   allSongs.forEach(song => {
     const { genre, composer, tempo, soundsLike, instrumentation, mood } = song
     genre && genre.forEach(genre => genresSet.add(genre))
-    composer && composer.forEach(composer => composersSet.add(composer))
+    // composer && composer.forEach(composer => composersSet.add(composer))
     tempo && tempo.forEach(tempo => temposSet.add(tempoCalc(tempo)))
     soundsLike && soundsLike.forEach(sound => soundsLikeSet.add(sound))
     instrumentation &&
@@ -51,7 +51,7 @@ const Filters = () => {
   })
   // all this crazy shit with sets is to get rid of duplicates
   const genresArr = sortArrayAlphabetically([...genresSet])
-  const composersArr = sortArrayAlphabetically([...composersSet])
+  // const composersArr = sortArrayAlphabetically([...composersSet])
   const temposArr = [...temposSet]
   const soundsLikeArr = sortArrayAlphabetically([...soundsLikeSet])
   const instrumentationArr = sortArrayAlphabetically([...instrumentationSet])
@@ -89,12 +89,12 @@ const Filters = () => {
             category="GENRE"
             values={genresArr}
           />
-          <CollapsibleContent
+          {/* <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}
             category="COMPOSER"
             values={composersArr}
-          />
+          /> */}
           <CollapsibleContent
             queryArr={queryArr}
             setQueryArr={setQueryArr}

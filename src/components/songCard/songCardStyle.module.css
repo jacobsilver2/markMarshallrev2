@@ -1,6 +1,5 @@
 .container {
-  background: var(--white);
-  border: 1px solid var(--grey);
+  border: 1px solid var(--white);
   /* border-radius: 8px; */
   margin-bottom: 1em;
   display: flex;
@@ -21,7 +20,7 @@
 .title {
   width: 100%;
   font-size: 2em;
-  color: var(--black);
+  color: var(--text);
 }
 
 .subtitleWrapper {
@@ -34,11 +33,11 @@
 .subtitle {
   /* padding-right: 0.5em; */
   font-size: small;
-  color: var(--darkGrey);
+  color: var(--offWhite);
 }
 
 .subtitle b {
-  color: var(--black);
+  color: var(--offwhite);
 }
 
 .buttonContainer {
