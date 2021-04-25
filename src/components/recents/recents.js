@@ -109,7 +109,7 @@ const Recents = ({ model, items }) => {
         <BackgroundImage
           key={item.contentful_id}
           onClick={() => handlePlaylistClick(item)}
-          fluid={item.image.fluid}
+          fluid={item.image && item.image.fluid ? item.image.fluid : null}
           className={styles.playlistBackground}
         >
           <StyledItem >
@@ -171,7 +171,7 @@ const Recents = ({ model, items }) => {
               <div>MOODS</div>
               <div>INSTRUMENTATION</div>
             </div>
-            {renderSongsDataGrid(clickedPlaylist.songs)}
+             {clickedPlaylist.songs && renderSongsDataGrid(clickedPlaylist.songs)}
           </div>
         </div>
       )}
