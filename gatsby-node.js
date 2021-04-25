@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   paginate({
     createPage,
     items: result.data.songs.nodes,
-    itemsPerPage: 5,
+    itemsPerPage: 10,
     pathPrefix: "/music",
     component: path.resolve("./src/templates/music.js"),
   })
