@@ -12,9 +12,9 @@ const StyledContainer = styled.div`
 `
 
 const StyledButton = styled.button`
-  border: 1px solid black;
+  border: 1px solid var(--offWhite);
   border-radius: 8px;
-  color: var(--textDark);
+  color: var(--offWhite);
   padding: 2em;
 `
 

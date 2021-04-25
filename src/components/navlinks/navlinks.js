@@ -11,6 +11,13 @@ const mappedNavLinks = navLinksArr.map(navLink => (
   </li>
 ))
 
+const rebuildSite = () => {
+  fetch('https://api.netlify.com/build_hooks/6067993b10cbab20a171dca8', {
+    method: 'post'
+  })
+}
+
+
 const Navlinks = () => {
   const ref = useRef()
   const [isToggled, setIsToggled] = useState(true)
@@ -57,6 +64,7 @@ const Navlinks = () => {
               >
                 Generate Waveform Image
               </Link>
+              <button onClick={() => rebuildSite()} className={styles.link}>Rebuild Site</button>
               <div className={styles.space}></div>
               <button onClick={AuthService.logout} className={styles.link}>
                 Log Out
