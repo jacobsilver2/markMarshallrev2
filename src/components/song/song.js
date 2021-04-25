@@ -65,14 +65,16 @@ const Song = ({ song }) => {
         </div>
         {song.composer && (
           <div className={styles.composer}>
-            <b>Composer{song.composer.length > 1 ? "s" : ""}: </b>
+            <b className={styles.subject}>
+              Composer{song.composer.length > 1 ? "s" : ""}:{" "}
+            </b>
             {song.composer.join(", ")}
           </div>
         )}
         {song.description && (
           <div className={styles.description}>
             <p>
-              <b>Description: </b>
+              <b className={styles.subject}>Description: </b>
               {song.description.description}
             </p>
           </div>
@@ -80,7 +82,7 @@ const Song = ({ song }) => {
         {song.tempo && (
           <div className={styles.tempo}>
             <p>
-              <b>Tempo: </b>
+              <b className={styles.subject}>Tempo: </b>
               {song.tempo} bpm
             </p>
           </div>
@@ -88,7 +90,7 @@ const Song = ({ song }) => {
         {song.instrumentation && (
           <div className={styles.instrumentation}>
             <p>
-              <b>Instrumentation: </b>
+              <b className={styles.subject}>Instrumentation: </b>
               {song.instrumentation.join(", ")}
             </p>
           </div>
@@ -96,7 +98,9 @@ const Song = ({ song }) => {
         {song.genre && (
           <div className={styles.genre}>
             <p>
-              <b>Genre{song.genre.length > 1 ? "s" : ""}: </b>
+              <b className={styles.subject}>
+                Genre{song.genre.length > 1 ? "s" : ""}:{" "}
+              </b>
               {song.genre.join(", ")}
             </p>
           </div>
@@ -104,7 +108,9 @@ const Song = ({ song }) => {
         {song.mood && (
           <div className={styles.mood}>
             <p>
-              <b>Mood{song.mood.length > 1 ? "s" : ""}: </b>
+              <b className={styles.subject}>
+                Mood{song.mood.length > 1 ? "s" : ""}:{" "}
+              </b>
               {song.mood.join(", ")}
             </p>
           </div>
@@ -112,7 +118,7 @@ const Song = ({ song }) => {
         {song.soundsLike && (
           <div className={styles.soundsLike}>
             <p>
-              <b>Sounds Like: </b>
+              <b className={styles.subject}>Sounds Like: </b>
               {song.soundsLike.join(", ")}
             </p>
           </div>

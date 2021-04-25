@@ -27,11 +27,11 @@ const Home = () => {
           nodes {
             title
             contentful_id
-              image {
-                fluid {
-                  ...GatsbyContentfulFluid
-                }
+            image {
+              fluid {
+                ...GatsbyContentfulFluid
               }
+            }
             songs {
               contentful_id
               title

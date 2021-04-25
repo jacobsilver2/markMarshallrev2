@@ -33,24 +33,34 @@
   font-size: 2em;
   align-self: left;
   padding-bottom: 1em;
+  font-weight: bold;
+}
+
+.subject {
+  color: var(--yellow);
 }
 
 .composer {
 }
 
 .tempo {
+  font-weight: bold;
 }
 
 .instrumentation {
+  font-weight: bold;
 }
 
 .genre {
+  font-weight: bold;
 }
 
 .mood {
+  font-weight: bold;
 }
 
 .soundsLike {
+  font-weight: bold;
 }
 
 .buttonContainer {
