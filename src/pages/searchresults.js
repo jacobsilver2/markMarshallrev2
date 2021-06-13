@@ -22,6 +22,8 @@ const SearchResults = ({ location }) => {
     localSearchSongs.store
   )
 
+  console.log(results)
+
   return (
     <>
       <SearchResultsComponent results={results} />

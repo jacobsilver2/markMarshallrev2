@@ -10,23 +10,11 @@ import { FaPlay, FaPause } from "react-icons/fa"
 import renderList from "../../lib/renderList"
 import tempoCalc from "../../lib/tempoCalc"
 
-
-//! using styled components for this task, so hovering over the container will
-//! only blur the background  and not the text
 const StyledItem = styled.div`
   cursor: pointer;
   position: relative;
   display: flex;
   font-size: 0.75em;
-`
-
-const StyledBackground = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* ${StyledItem}:hover & {
-    filter: blur(8px);
-  } */
 `
 
 const StyledButton = styled.button`
@@ -112,7 +100,7 @@ const Recents = ({ model, items }) => {
           fluid={item.image && item.image.fluid ? item.image.fluid : null}
           className={styles.playlistBackground}
         >
-          <StyledItem >
+          <StyledItem>
             <StyledButton onClick={() => handlePlaylistClick(item)}>
               <h1>{item.title}</h1>
             </StyledButton>
@@ -171,7 +159,8 @@ const Recents = ({ model, items }) => {
               <div>MOODS</div>
               <div>INSTRUMENTATION</div>
             </div>
-             {clickedPlaylist.songs && renderSongsDataGrid(clickedPlaylist.songs)}
+            {clickedPlaylist.songs &&
+              renderSongsDataGrid(clickedPlaylist.songs)}
           </div>
         </div>
       )}

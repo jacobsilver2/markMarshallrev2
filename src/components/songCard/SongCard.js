@@ -9,7 +9,6 @@ import {
 import tempoCalc from "../../lib/tempoCalc"
 import slugify from "../../lib/slugify"
 import styles from "./songCardStyle.module.css"
-import bg from "../../images/background.png"
 import { FaPlay, FaPause } from "react-icons/fa"
 
 const listLength = 3
@@ -49,7 +48,6 @@ const SongCard = ({ song }) => {
     waveformImage,
     audio,
     title,
-    composer,
     genre,
     mood,
   } = song
@@ -85,18 +83,6 @@ const SongCard = ({ song }) => {
             <Link to={`/music/${slugify(title)}`}>{title}</Link>
           </h3>
           <ul className={styles.subtitleWrapper}>
-            {/* {composer && (
-              <li className={styles.subtitle}>
-                <b>
-                  Composer
-                  {composer && composer.length && composer.length > 1
-                    ? "s"
-                    : ""}
-                  :
-                </b>{" "}
-                {composer && composer.join(", ")}
-              </li>
-            )} */}
             {genre && (
               <li className={styles.subtitle}>
                 <b>

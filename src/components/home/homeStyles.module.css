@@ -6,23 +6,20 @@
 }
 
 .title {
-  /* background: var(--white); */
   padding: 1.5rem;
+}
+
+.logoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .title h1 {
   font-family: "corso";
   color: var(--yellow);
-  /* font-size: 8vw; */
   font-size: var(--banner);
   line-height: 1;
 }
-
-/* .title h2 {
-  color: var(--black);
-  font-size: 1vw;
-  text-transform: uppercase;
-} */
 
 .title h3 {
   color: var(--offWhite);
@@ -34,14 +31,11 @@
 .recents {
   display: grid;
   padding: 1rem;
-  /* background: var(--white); */
-  /* grid-template-columns: repeat(auto-fit, minmax(375px, 1fr)); */
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 2rem;
   align-items: center;
   justify-items: center;
   margin: auto 0;
-  /* border: 2px solid white; */
 }
 
 @media screen and (min-width: 1800px) {
@@ -57,9 +51,5 @@
 
   .title h2 {
     font-size: 8vw;
-  }
-
-  .title h3 {
-    /* font-size: var(--bylineMobile); */
   }
 }

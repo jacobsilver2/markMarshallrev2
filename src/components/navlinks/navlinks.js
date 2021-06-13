@@ -2,14 +2,7 @@ import React, { useState, useRef } from "react"
 import { AuthService, useAuth } from "gatsby-theme-auth0"
 import { Link } from "gatsby"
 import styles from "./navLinkStyle.module.css"
-import navLinksArr from "../../lib/navLinksArr"
 import useOutsideClick from "../../hooks/useOutsideClick"
-
-const mappedNavLinks = navLinksArr.map(navLink => (
-  <li className={styles.link} key={navLink.name}>
-    <Link to={navLink.route}>{navLink.name.toUpperCase()}</Link>
-  </li>
-))
 
 const rebuildSite = () => {
   fetch("https://api.netlify.com/build_hooks/6067993b10cbab20a171dca8", {

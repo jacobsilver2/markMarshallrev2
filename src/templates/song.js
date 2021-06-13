@@ -4,21 +4,6 @@ import Seo from "../components/seo"
 import SongComponent from "../components/song/song"
 
 const SongTemplate = props => {
-  // commenting this next line out while scaffolding to avoid annoying es-lint warnings.
-  // const {
-  //   audio,
-  //   composer,
-  //   genre,
-  //   instrumentation,
-  //   mood,
-  //   soundsLike,
-  //   tempo,
-  //   description,
-  //   title,
-  //   waveformImage,
-  //   contentful_id,
-  // } = props.data.song
-
   return (
     <>
       <Seo title={props.data.song.title} />

@@ -1,0 +1,23 @@
+.container {
+  height: 100%;
+  padding: 1em;
+}
+
+.container li {
+  margin: 0;
+  padding: 0;
+}
+
+.titleBar {
+  color: white;
+  text-align: center;
+  padding-bottom: 0.5em;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.description {
+  text-align: center;
+  color: white;
+  padding-bottom: 1em;
+}

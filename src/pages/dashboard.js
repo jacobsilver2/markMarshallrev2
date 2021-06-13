@@ -1,6 +1,5 @@
 import React from "react"
 import { AuthService, useAuth } from "gatsby-theme-auth0"
-import UploadSong from "../components/uploadSong/uploadSong"
 
 const DashboardPage = () => {
   const { isLoggedIn } = useAuth()
@@ -13,7 +12,6 @@ const DashboardPage = () => {
           Login
         </button>
       )}
-      {/* {isLoggedIn && <UploadSong />} */}
     </>
   )
 }

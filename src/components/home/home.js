@@ -2,10 +2,11 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styles from "./homeStyles.module.css"
 import Recents from "../recents/recents"
+import Img from "gatsby-image"
 import bg from "../../images/background.png"
 
 const Home = () => {
-  const { recentSongs, recentPlaylists } = useStaticQuery(
+  const { recentSongs, recentPlaylists, logo } = useStaticQuery(
     graphql`
       query Recents {
         recentSongs: allContentfulSong(limit: 9) {
@@ -47,9 +48,20 @@ const Home = () => {
             }
           }
         }
+        logo: file(name: { eq: "logo" }) {
+          id
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     `
   )
+
+  console.log(logo)
+
   return (
     <div
       style={{
@@ -60,9 +72,13 @@ const Home = () => {
       className={styles.container}
     >
       <div className={styles.title}>
-        {/* <h2>mark marshall's</h2> */}
-        <h1>FUTURE RELICS</h1>
         <h3>imagery through sound</h3>
+        <h1>FUTURE RELICS</h1>
+        <div className={styles.logoContainer}>
+          <div></div>
+          <Img fluid={logo.childImageSharp.fluid} />
+          <div></div>
+        </div>
       </div>
       <div className={styles.recents}>
         <Recents model="songs" items={recentSongs} />

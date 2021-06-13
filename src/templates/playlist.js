@@ -1,21 +1,11 @@
 import React from "react"
 import { graphql, navigate } from "gatsby"
+import PlaylistComponent from "../components/playlist/playlist"
 
-const PlaylistTemplate = props => {
-  // commenting this crap out while I scaffold to avoid ESList warnings
-  // const {
-  //   description,
-  //   title,
-  //   image,
-  //   songs,
-  //   contentful_id,
-  // } = props.data.playlist
+const PlaylistTemplate = ({ data }) => {
   return (
     <>
-      <div>Hi from playlist {props.data.playlist.title}</div>
-      <button type="button" onClick={() => navigate(-1)}>
-        Go back
-      </button>
+      <PlaylistComponent playlist={data.playlist} />
     </>
   )
 }
@@ -28,6 +18,9 @@ export const pageQuery = graphql`
       contentful_id
       title
       updatedAt
+      description {
+        raw
+      }
       image {
         title
         fluid {
@@ -43,6 +36,11 @@ export const pageQuery = graphql`
         soundsLike
         tempo
         title
+        waveformImage {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
         audio {
           file {
             url

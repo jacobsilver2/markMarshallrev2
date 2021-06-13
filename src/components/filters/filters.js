@@ -33,16 +33,14 @@ const Filters = () => {
   const { nodes: allSongs } = data.songs
 
   const genresSet = new Set()
-  const composersSet = new Set()
   const temposSet = new Set()
   const soundsLikeSet = new Set()
   const instrumentationSet = new Set()
   const moodSet = new Set()
 
   allSongs.forEach(song => {
-    const { genre, composer, tempo, soundsLike, instrumentation, mood } = song
+    const { genre, tempo, soundsLike, instrumentation, mood } = song
     genre && genre.forEach(genre => genresSet.add(genre))
-    // composer && composer.forEach(composer => composersSet.add(composer))
     tempo && tempo.forEach(tempo => temposSet.add(tempoCalc(tempo)))
     soundsLike && soundsLike.forEach(sound => soundsLikeSet.add(sound))
     instrumentation &&

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import ReactModal from "react-modal"
 import Header from "../header/header"
 import Sidebar from "../sidebar/sidebar"

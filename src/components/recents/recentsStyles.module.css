@@ -3,7 +3,8 @@
 }
 
 .items {
-  max-height: 400px;
+  height: 500px;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -24,7 +25,8 @@
 .songsContainer {
   color: var(--offWhite);
   border: 1px solid var(--offWhite);
-  max-height: 400px;
+  height: 500px;
+  max-width: 100%;
   padding: 1em;
   display: grid;
   grid-template-columns: 1fr;
@@ -145,4 +147,18 @@
 
 .brown {
   background: var(--brown);
+}
+
+@media only screen and (max-width: 600px) {
+  /* .recentSongsContainer {
+    width: 80%;
+    height: 80%;
+  } */
+  /* .songsContainer {
+    height: 300px;
+  }
+
+  .items {
+    height: 300px;
+  } */
 }
