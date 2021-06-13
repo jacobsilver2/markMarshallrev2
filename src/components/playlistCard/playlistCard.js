@@ -28,12 +28,10 @@ const PlaylistCard = ({ playlist }) => {
       <Link to={`/playlists/${slugify(playlist.title)}`}>
         <div className={styles.card}>
           <div className={styles.innerBox}>
-            <div className={styles.flipCardFront}>
-              <div className={styles.title}>
-                <h1>{playlist.title}</h1>
-              </div>
-              <div className={styles.description}>{desc && <p>{desc}</p>}</div>
+            <div className={styles.title}>
+              <h1>{playlist.title}</h1>
             </div>
+            <div className={styles.description}>{desc && <p>{desc}</p>}</div>
           </div>
         </div>
       </Link>
