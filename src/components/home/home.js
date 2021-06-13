@@ -60,8 +60,6 @@ const Home = () => {
     `
   )
 
-  console.log(logo)
-
   return (
     <div
       style={{
