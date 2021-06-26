@@ -15,7 +15,6 @@ const Home = () => {
             genre
             mood
             tempo
-            instrumentation
             contentful_id
             audio {
               file {

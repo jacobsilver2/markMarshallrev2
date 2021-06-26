@@ -31,7 +31,8 @@
 .recents {
   display: grid;
   padding: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: auto;
+  /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); */
   grid-gap: 2rem;
   align-items: center;
   justify-items: center;

@@ -80,13 +80,6 @@ const Recents = ({ model, items }) => {
         <div>
           <p>{item.mood ? renderList(item.mood, false) : ""}</p>
         </div>
-        <div>
-          <p>
-            {item.instrumentation
-              ? renderList(item.instrumentation, false)
-              : ""}
-          </p>
-        </div>
       </div>
     ))
   }
@@ -123,7 +116,6 @@ const Recents = ({ model, items }) => {
               <div>TEMPO</div>
               <div>GENRES</div>
               <div>MOODS</div>
-              <div>INSTRUMENTATION</div>
             </div>
             {renderSongsDataGrid(items.nodes)}
           </div>
@@ -157,7 +149,6 @@ const Recents = ({ model, items }) => {
               <div>TEMPO</div>
               <div>GENRES</div>
               <div>MOODS</div>
-              <div>INSTRUMENTATION</div>
             </div>
             {clickedPlaylist.songs &&
               renderSongsDataGrid(clickedPlaylist.songs)}
