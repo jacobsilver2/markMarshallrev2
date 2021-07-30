@@ -1,3 +1,32 @@
 .container {
   padding: 2em;
+
+}
+
+.container a:link {
+  color: var(--yellow)
+}
+
+.container a:hover:link {
+  color: var(--red)
+}
+
+.container details > summary:hover {
+  color: var(--red);
+}
+
+.container details > summary {
+  list-style-type: none;  
+}
+
+.container details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.container details > summary::before {
+  content: ' + ';
+}
+
+.container details[open] > summary::before {
+  content: ' - ';
 }
